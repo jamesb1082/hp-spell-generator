@@ -1,0 +1,8 @@
+Functions To Create Harry Potter Spells
+=======================================
+
+.. automodule:: hp_spells
+	:members:
+
+
+

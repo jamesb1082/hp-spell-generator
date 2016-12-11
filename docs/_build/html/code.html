@@ -1,0 +1,336 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Harry Potter Spell Generator Functions &#8212; Match Harry Potter Spells With Their Definition 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to Match HP spells with their definitions’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-hp_spells">
+<span id="harry-potter-spell-generator-functions"></span><h1>Harry Potter Spell Generator Functions<a class="headerlink" href="#module-hp_spells" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="hp_spells.calcProb">
+<code class="descclassname">hp_spells.</code><code class="descname">calcProb</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#hp_spells.calcProb" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Calculates the probabilities for spells of each type.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em></em><em>[</em><em></em><em>[</em><em>str</em><em>, </em><em>str</em><em>, </em><em>int</em><em>]</em><em>..</em><em>]</em><em></em>) &#8211; List of spell types and origin language with frequency.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list of type of spells and their associated probabilities.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="hp_spells.checkStoredWords">
+<code class="descclassname">hp_spells.</code><code class="descname">checkStoredWords</code><span class="sig-paren">(</span><em>kwords</em>, <em>word</em><span class="sig-paren">)</span><a class="headerlink" href="#hp_spells.checkStoredWords" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>This function updates a list of known words with a new word. If the spell type and language exists in the list the value is append by 1 otherwise, it is appended to the end of the list with a value of 1.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>kwords</strong> (<em></em><em>[</em><em></em><em>[</em><em>str</em><em>, </em><em>str</em><em>, </em><em>int</em><em>]</em><em>..</em><em>]</em><em></em>) &#8211; List of spell types and language with associated frequencies.</li>
+<li><strong>word</strong> (<em>str</em>) &#8211; One being the spell type and the other being the origin language.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the updated list of known words.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="hp_spells.contains">
+<code class="descclassname">hp_spells.</code><code class="descname">contains</code><span class="sig-paren">(</span><em>string</em>, <em>char</em><span class="sig-paren">)</span><a class="headerlink" href="#hp_spells.contains" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Checks to see if a string contains a character.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>string</strong> (<em>str</em>) &#8211; The string to be checked.</li>
+<li><strong>char</strong> (<em>str</em>) &#8211; The character to be looked for.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Boolean value.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="hp_spells.count_instances">
+<code class="descclassname">hp_spells.</code><code class="descname">count_instances</code><span class="sig-paren">(</span><em>fname</em><span class="sig-paren">)</span><a class="headerlink" href="#hp_spells.count_instances" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Reads supplied file, where it splits it up. Then it appends each word to the data set building a list of words and frequencies using checkStoredWords(kwords, word).</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>fname</strong> (<em>str</em>) &#8211; This is the name of the CSV file in which the spell data is stored.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">returns a list of languages and the probabilities for each one.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="hp_spells.f">
+<code class="descclassname">hp_spells.</code><code class="descname">f</code><span class="sig-paren">(</span><em>str</em><span class="sig-paren">)</span><a class="headerlink" href="#hp_spells.f" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the first two chacters from the string.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>str</strong> (<em>str</em>) &#8211; A word that is passed.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a string that only contains the first two letters.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="hp_spells.generateScale">
+<code class="descclassname">hp_spells.</code><code class="descname">generateScale</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#hp_spells.generateScale" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>This stacks the probabilities of spells so that each spell has a boundary in which it a spell can be selected over another.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em></em><em>[</em><em></em><em>[</em><em></em><em>[</em><em>str</em><em>,</em><em>str</em><em>]</em><em></em><em>,</em><em>int</em><em>,</em><em>float</em><em>]</em><em>..</em><em>]</em><em></em>) &#8211; list of spell names and their associated frequencies and probabilities.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a list of spells and the value between 0-1 in which that name will be selected.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="hp_spells.generateSpell">
+<code class="descclassname">hp_spells.</code><code class="descname">generateSpell</code><span class="sig-paren">(</span><em>sentence</em><span class="sig-paren">)</span><a class="headerlink" href="#hp_spells.generateSpell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a Spell from a sentence.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sentence</strong> (<em>str</em>) &#8211; string which is the definition of the spell you want to create.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list containing the spell and the spell type.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="hp_spells.getSpellType">
+<code class="descclassname">hp_spells.</code><code class="descname">getSpellType</code><span class="sig-paren">(</span><em>scale</em>, <em>rndNum</em><span class="sig-paren">)</span><a class="headerlink" href="#hp_spells.getSpellType" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Selects a spell according to the random number passed.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>scale</strong> (<em></em><em>[</em><em></em><em>(</em><em>str</em><em>,</em><em>str</em><em>,</em><em>float</em><em>)</em><em>.</em><em>]</em><em></em>) &#8211; A list of tuples which contains the probability associated with each spell and type.</li>
+<li><strong>rndNum</strong> (<em>float</em>) &#8211; The random number used to select a spell type.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A string which is the spell type.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="hp_spells.langCode">
+<code class="descclassname">hp_spells.</code><code class="descname">langCode</code><span class="sig-paren">(</span><em>language</em><span class="sig-paren">)</span><a class="headerlink" href="#hp_spells.langCode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a language name into a language code for the translator.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>language</strong> (<em>tr</em>) &#8211; Full name of the language, for example latin.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The string code for the language.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="hp_spells.pigLatin">
+<code class="descclassname">hp_spells.</code><code class="descname">pigLatin</code><span class="sig-paren">(</span><em>source</em><span class="sig-paren">)</span><a class="headerlink" href="#hp_spells.pigLatin" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Takes a source string and converts it from english to pig latin.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>source</strong> (<em>str</em>) &#8211; Takes string of english words and changes it into pig latin.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a string containing pig latin words.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="hp_spells.sentenceToWord">
+<code class="descclassname">hp_spells.</code><code class="descname">sentenceToWord</code><span class="sig-paren">(</span><em>sentence</em><span class="sig-paren">)</span><a class="headerlink" href="#hp_spells.sentenceToWord" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a string and converts it into a vector. Then from that it picks a similar word that doesn&#8217;t contain an underscore.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sentence</strong> (<em>str</em>) &#8211; A string which contains a sentence to be converted into one word.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A string containing a similar word.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="hp_spells.totalSpells">
+<code class="descclassname">hp_spells.</code><code class="descname">totalSpells</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#hp_spells.totalSpells" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Counts the number of spells in the dataset.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em></em><em>[</em><em></em><em>[</em><em></em><em>[</em><em>str</em><em>,</em><em>str</em><em>]</em><em></em><em>, </em><em>int</em><em>]</em><em>..</em><em>]</em><em></em>) &#8211; List of spell types and origin language with frequency.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">an integer value of total number of spells.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="hp_spells.translate2">
+<code class="descclassname">hp_spells.</code><code class="descname">translate2</code><span class="sig-paren">(</span><em>word</em>, <em>lang</em><span class="sig-paren">)</span><a class="headerlink" href="#hp_spells.translate2" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Translates a word to a target language.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>word</strong> (<em>str</em>) &#8211; The word you want to convert.</li>
+<li><strong>lang</strong> (<em>str</em>) &#8211; the lang code of the language you want to convert to.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a string containing the translated word in the latin alphabet.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to Match HP spells with their definitions&#8217;s documentation!</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/code.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, James Brill.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/code.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
