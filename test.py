@@ -28,3 +28,6 @@ if __name__ == '__main__':
 
 	#test 3 language code
 	assert langCode("latin") == "la" 	
+
+	#test 4 pig latin function 
+	assert pigLatin("this is a test") == "isthay isway away esttay"
