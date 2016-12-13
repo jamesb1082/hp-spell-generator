@@ -4,49 +4,45 @@ import pytest
 from hp_spells import *
 
 
-def failedtest(num, name):
-	str1 = "test " + str(num) +  ": " + str(name) 
-	str2 = "result = failed" 
-	
-	print("{0:<50} {1:<50}".format(str1, str2)) 
-	
-if __name__ == '__main__':
-	
-	#Test 1 checks whether the string contains a character
-	try:
-		assert contains("james", "_") == False
-	except: 
-		failedtest(1, "contains()") 
-	#Test 2  
+def test1():
+	assert contains("james", "_") == False
+
+def test2(): 
 	input1 = [
 			["type 1", 2, "lang 1"], 
 			["type 1", 2, "lang 2"], 
 			["type 2", 2, "lang 1"], 
 			["type 2", 2, "lang 2"], 
 	]
-
 	output = [
 			["type 1", 2, "lang 1", 0.25], 
 			["type 1", 2, "lang 2", 2, 0.25], 
 			["type 2", 2, "lang 1", 0.25], 
 			["type 2", 2, "lang 2", 0.25],
 	]
-
-	try: 
-		assert calcProb(input1) == output
-	except: 
-		failedtest(2, "calcProb()")
+	assert calcProb(input1) == output
 
 
-	#test 3 language code
-	try:
-		assert langCode("latin") == "la" 	
-	except: 
-		failedtest(3, "langCode()") 
+def test3():
+	assert langCode("latin") == "la"
+
+
+def test4():
+	assert pigLatin("this is a test") == "histay isay aay esttay"
+
+def test5(): 
+	assert translate2("hello", "la")
+
+if __name__ == '__main__':
+
+
+	test1()
+	test2()
+	test3()
+	test4()
+	test5()
 
 	
-	#test 4 pig latin function 
-	try: 
-		assert pigLatin("this is a test") == "histay isay aay esttay"
-	except: 
-		failedtest(3, "pigLatin()") 
+	print("All tests have passed.") 
+	
+
