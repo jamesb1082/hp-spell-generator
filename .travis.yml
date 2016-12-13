@@ -2,5 +2,9 @@ language: python
 python:
   - "2.7"
 
+install:
+  pip install gensim
+  pip install translate
+  pip install transliterate
 # command to run tests
 script: python test.py
