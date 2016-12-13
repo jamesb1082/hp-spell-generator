@@ -1,8 +1,8 @@
 import sys
 sys.path.insert(0, '../hp_spells/')
 import pytest
-import hp_spells
+from hp_spells import contains
 
 
 if __name__ == '__main__':
-	assert hp_spells.contains("james", "_") == False 
+	assert contains("james", "_") == False 
