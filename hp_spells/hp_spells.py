@@ -64,7 +64,6 @@ def totalSpells(data):
     """
 
     total = 0
-	
     for d in data:
         total += d[1]
     return total
@@ -83,7 +82,7 @@ def calcProb(data):
     total = totalSpells(data)
     prob = 0.0
     for d in data:
-        prob = d[1] / total
+        prob = float(d[1] / total)
         d.append(prob)
     return data
 
