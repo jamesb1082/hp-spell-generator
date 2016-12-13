@@ -24,5 +24,5 @@ if __name__ == '__main__':
 			["type 2", "lang 2", 2, 0.25],
 	]
 
-	assert calcProb(input1) == output
+	#assert calcProb(input1) == output
 	
