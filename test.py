@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(0, '../hp_spells/')
+sys.path.insert(0, '../hp_spells/hp_spells')
 import pytest
 from hp_spells import contains
 
