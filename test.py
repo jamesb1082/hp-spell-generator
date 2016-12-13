@@ -1,9 +1,7 @@
 import sys
-sys.path.insert(0, '../hp_spells/hp_spells')
+sys.path.insert(0, 'hp_spells/')
 import pytest
-from hp_spells import contains
-from hp_spells import langCode
-from hp_spells import calcProb 
+from hp_spells import *
 
 
 if __name__ == '__main__':
