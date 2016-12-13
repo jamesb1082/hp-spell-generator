@@ -1,7 +1,7 @@
 import sys
 sys.path.insert(0, 'hp_spells/')
 import pytest
-from hp_spells import contains
+from hp_spells import *
 
 
 if __name__ == '__main__':
@@ -23,7 +23,6 @@ if __name__ == '__main__':
 			["type 2", 2, "lang 1", 0.25], 
 			["type 2", 2, "lang 2", 0.25],
 	]
-
 	assert calcProb(input1) == output
 
 
