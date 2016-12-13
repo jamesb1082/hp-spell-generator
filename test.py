@@ -5,4 +5,4 @@ import hp_spells
 
 
 if __name__ == '__main__':
-	assert hp_spells.contains("james", "_") == False 
+	assert contains("james", "_") == False 
