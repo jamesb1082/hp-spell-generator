@@ -33,15 +33,27 @@ def test4():
 def test5(): 
 	assert translate2("hello", "la")
 
+def test6(): 
+	assert f("james") == "ja" 
+
+def test7(): 
+	input1 = [
+		["type 1", 2, "lang 1"], 
+		["type 1", 2, "lang 2"], 
+		["type 2", 2, "lang 1"], 
+		["type 2", 2, "lang 2"], 
+	]	
+	assert totalSpells(input1) == 8
 if __name__ == '__main__':
 
 
 	test1()
-	test2()
+#	test2()
 	test3()
 	test4()
 	test5()
-
+	test6()
+	test7()
 	
 	print("All tests have passed.") 
 	
