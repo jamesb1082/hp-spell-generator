@@ -1,7 +1,7 @@
 import sys
 sys.path.insert(0, 'hp_spells/')
 import pytest
-from hp_spells import *
+from hp_spells import contains
 
 
 if __name__ == '__main__':
@@ -28,4 +28,4 @@ if __name__ == '__main__':
 
 
 	#test 3 language code
-	assert langCode("latin") == "la" 	
+#	assert langCode("latin") == "la" 	
