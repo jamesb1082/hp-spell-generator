@@ -1,13 +1,15 @@
 import sys
 sys.path.insert(0, '../hp_spells/')
 import pytest
-import hp_spells
+from hp_spells import contains
+from hp_spells import langCode
+from hp_spells import calcProb 
 
 
 if __name__ == '__main__':
 
 	#Test 1 checks whether the string contains a character
-	assert hp_spells.contains("james", "_") == False
+	assert contains("james", "_") == False
 
 	#Test 2  
 	input1 = [
@@ -28,4 +30,4 @@ if __name__ == '__main__':
 
 
 	#test 3 language code
-	assert hp_spells.langCode("latin") == "la" 	
+	assert langCode("latin") == "la" 	
