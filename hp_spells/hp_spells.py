@@ -64,6 +64,7 @@ def totalSpells(data):
     """
 
     total = 0
+	print(data)
     for d in data:
         total += d[1]
     return total
