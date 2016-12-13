@@ -9,17 +9,18 @@ def test1():
 
 def test2(): 
 	input1 = [
-			["type 1", 2, "lang 1"], 
-			["type 1", 2, "lang 2"], 
-			["type 2", 2, "lang 1"], 
-			["type 2", 2, "lang 2"], 
+			[["type 1", 2, "lang 1"], 2], 
+			[["type 1", 2, "lang 2"], 2], 
+			[["type 2", 2, "lang 1"], 2],  
+			[["type 2", 2, "lang 2"], 2],
 	]
 	output = [
-			["type 1", 2, "lang 1", 0.25], 
-			["type 1", 2, "lang 2", 2, 0.25], 
-			["type 2", 2, "lang 1", 0.25], 
-			["type 2", 2, "lang 2", 0.25],
+			[["type 1", 2, "lang 1"], 2, 0.25], 
+			[["type 1", 2, "lang 2"], 2, 0.25], 
+			[["type 2", 2, "lang 1"], 2, 0.25], 
+			[["type 2", 2, "lang 2"], 2, 0.25],
 	]
+	
 	assert calcProb(input1) == output
 
 
@@ -44,6 +45,9 @@ def test7():
 		["type 2", 2, "lang 2"], 
 	]	
 	assert totalSpells(input1) == 8
+def test8():
+	assert checkStoredWords([], ["spell 1", "type 1"]) == [[["spell 1", "type 1"], 1]]
+	 
 if __name__ == '__main__':
 
 
@@ -54,7 +58,7 @@ if __name__ == '__main__':
 	test5()
 	test6()
 	test7()
-	
+	test8()
 	print("All tests have passed.") 
 	
 

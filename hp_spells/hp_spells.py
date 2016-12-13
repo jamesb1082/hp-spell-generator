@@ -14,7 +14,7 @@ def checkStoredWords(kwords, word):
     :param kwords: List of spell types and language with associated frequencies.  
     :param word: One being the spell type and the other being the origin language.
     :type kwords: [[str, str, int]...] 
-    :type word: str  
+    :type word: [str, str]  
     :return: the updated list of known words. 
     """ 
 
