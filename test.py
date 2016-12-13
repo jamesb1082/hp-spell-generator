@@ -24,8 +24,8 @@ if __name__ == '__main__':
 			["type 2", 2, "lang 2", 0.25],
 	]
 
-#	assert calcProb(input1) == output
+	assert calcProb(input1) == output
 
 
 	#test 3 language code
-#	assert langCode("latin") == "la" 	
+	assert langCode("latin") == "la" 	
