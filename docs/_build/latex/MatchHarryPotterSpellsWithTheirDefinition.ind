@@ -1,0 +1,41 @@
+\begin{theindex}
+\def\bigletter#1{{\Large\sffamily#1}\nopagebreak\vspace{1mm}}
+
+  \bigletter C
+  \item calcProb() (in module hp\_spells), \hyperpage{1}
+  \item checkStoredWords() (in module hp\_spells), \hyperpage{1}
+  \item contains() (in module hp\_spells), \hyperpage{1}
+  \item count\_instances() (in module hp\_spells), \hyperpage{1}
+
+  \indexspace
+  \bigletter F
+  \item f() (in module hp\_spells), \hyperpage{2}
+
+  \indexspace
+  \bigletter G
+  \item generateScale() (in module hp\_spells), \hyperpage{2}
+  \item generateSpell() (in module hp\_spells), \hyperpage{2}
+  \item getSpellType() (in module hp\_spells), \hyperpage{2}
+
+  \indexspace
+  \bigletter H
+  \item hp\_spells (module), \hyperpage{1}
+
+  \indexspace
+  \bigletter L
+  \item langCode() (in module hp\_spells), \hyperpage{2}
+
+  \indexspace
+  \bigletter P
+  \item pigLatin() (in module hp\_spells), \hyperpage{2}
+
+  \indexspace
+  \bigletter S
+  \item sentenceToWord() (in module hp\_spells), \hyperpage{2}
+
+  \indexspace
+  \bigletter T
+  \item totalSpells() (in module hp\_spells), \hyperpage{3}
+  \item translate2() (in module hp\_spells), \hyperpage{3}
+
+\end{theindex}

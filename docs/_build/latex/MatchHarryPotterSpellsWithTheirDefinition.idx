@@ -1,0 +1,14 @@
+\indexentry{hp\_spells (module)|hyperpage}{1}
+\indexentry{calcProb() (in module hp\_spells)|hyperpage}{1}
+\indexentry{checkStoredWords() (in module hp\_spells)|hyperpage}{1}
+\indexentry{contains() (in module hp\_spells)|hyperpage}{1}
+\indexentry{count\_instances() (in module hp\_spells)|hyperpage}{1}
+\indexentry{f() (in module hp\_spells)|hyperpage}{2}
+\indexentry{generateScale() (in module hp\_spells)|hyperpage}{2}
+\indexentry{generateSpell() (in module hp\_spells)|hyperpage}{2}
+\indexentry{getSpellType() (in module hp\_spells)|hyperpage}{2}
+\indexentry{langCode() (in module hp\_spells)|hyperpage}{2}
+\indexentry{pigLatin() (in module hp\_spells)|hyperpage}{2}
+\indexentry{sentenceToWord() (in module hp\_spells)|hyperpage}{2}
+\indexentry{totalSpells() (in module hp\_spells)|hyperpage}{3}
+\indexentry{translate2() (in module hp\_spells)|hyperpage}{3}
