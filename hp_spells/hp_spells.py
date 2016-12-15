@@ -14,7 +14,7 @@ def checkStoredWords(kwords, word):
     :param kwords: List of spell types and language with associated frequencies.  
     :param word: One being the spell type and the other being the origin language.
     :type kwords: [[str, str, int]...] 
-    :type word: [str, str]  
+    :type word: str  
     :return: the updated list of known words. 
     """ 
 
@@ -82,7 +82,7 @@ def calcProb(data):
     total = totalSpells(data)
     prob = 0.0
     for d in data:
-        prob = float(d[1] / total)
+        prob = d[1] / total
         d.append(prob)
     return data
 
