@@ -3,15 +3,33 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Match HP spells with their definitions's documentation!
+Welcome to Match HP spells with their definition's documentation!
 ==================================================================
 
 About
 -----
-* The aim of this project is to evaluate Word2Vec and GloVe representation of words.
+This is a research project which aims to explore computational creativity using recent advancements in natural language processing and machine learning. In order to execute this research, this program will be created and used to match harry potter spells to their definitions. The research will focus on how good two different types of vector representation of words (GloVe and Word2Vec) are at modelling semantic simalarity.  
 
-* As a result of doing this research, I program will exist to generate Harry Potter Spells
-  from their definitions. This is the technical documentation outlining the functions created.
+
+Current Features
+----------------
+* Can convert a given sentence into a Harry Potter spell with random language and type.
+ 
+* Uses Google's Word2Vec to get semantically similar words. 
+
+* It is non-determinstic, it will not supply the output every time. 
+
+ 
+
+
+
+Usage Notes 
+-----------
+* This program uses various python packages such as gensim and translate. To install all the relevant python packages go to the base directory of the project and run the command "pip install -r requirements.txt". 
+
+* This program is designed to run through a command line interface and does not have a GUI. 
+
+
 
 .. toctree::
    :maxdepth: 2
