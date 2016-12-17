@@ -1,10 +1,10 @@
+from __future__ import division
 import random
 import gensim
 from random import randint
 from translate import Translator
 import numpy as np
 from transliterate import translit
-
 	
 def checkStoredWords(kwords, word):
     """
@@ -13,7 +13,7 @@ def checkStoredWords(kwords, word):
 
     :param kwords: List of spell types and language with associated frequencies.  
     :param word: One being the spell type and the other being the origin language.
-    :type kwords: [[str, str, int]...] 
+    :type kwords: [[[str, str], int]...] 
     :type word: str  
     :return: the updated list of known words. 
     """ 
@@ -75,15 +75,16 @@ def calcProb(data):
 	Calculates the probabilities for spells of each type. 
 
     :param data: List of spell types and origin language with frequency. 
-    :type data: [[str, str, int]...] 
+    :type data: [[[str, str], int]...] 
     :return: A list of type of spells and their associated probabilities.
     """
 
     total = totalSpells(data)
     prob = 0.0
     for d in data:
-        prob = d[1] / total
-        d.append(prob)
+	prob = d[1] / total	
+        print(prob)
+	d.append(prob)
     return data
 
 
@@ -315,12 +316,12 @@ def generateSpell(sentence):
 
 #main()
 if __name__ == '__main__':
-	print("Started")
-	model = gensim.models.Word2Vec.load_word2vec_format("GoogleNews-vectors-negative300.bin", binary=True)
+	print("Started") #vector file cannot be in the same location due to github limitations.
+	model = gensim.models.Word2Vec.load_word2vec_format("../../GoogleNews-vectors-negative300.bin", binary=True)
 	model.init_sims(replace=True)  # removes excess ram and trims model.
 	print("Model Trained")
-	#for i in range(0, 100):
-	print(generateSpell("open the door quietly"))
-	print("------------------------------------------")
+	for i in range(0, 10):
+		print(generateSpell("open the door quietly"))
+		print("------------------------------------------")
 
 
