@@ -155,7 +155,7 @@ def contains(string, char):
     
 
 
-def langCode(language): #python 2.7 not supported with this function currently.
+def langCode(language): #this now works with python 2.7 i believe.  
     """
     
     Converts a language name into a language code for the translator. 
@@ -195,7 +195,7 @@ def translate2(word, lang):
         if lang == 'el':
             return translit(word, lang, reversed=True)
         return out
-    except (KeyError, TypeError):
+    except:
         log("Error Cannot translate: " + word)
 
 def log(text): 
@@ -297,7 +297,7 @@ def generateSpell(sentence, model):
     scale = generateScale(count_instances('spell_prob.csv'))
     selection = random.random()
     spell_meta = getSpellType(scale, selection)
-    print vector
+    
     try:
         target_lang = langCode(spell_meta[1])
     except:
@@ -334,7 +334,7 @@ if __name__ == '__main__':
     model = load("../../vectors/GoogleNews-vectors-negative300.bin")
     logFile = open("log.txt", 'w') #the log file is blank at start of each execution 
     logFile.close() #closes the log file 
-    for i in range(0, 5): 
+    for i in range(0, 1): 
         print "---------------", i, "---------------"
         spellFile = open("spells.csv") 
         entry = [] 
