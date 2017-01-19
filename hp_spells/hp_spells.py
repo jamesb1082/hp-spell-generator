@@ -82,8 +82,7 @@ def calcProb(data):
     total = totalSpells(data)
     prob = 0.0
     for d in data:
-	prob = d[1] / total	
-        print(prob)
+	prob = d[1] / total
 	d.append(prob)
     return data
 
@@ -200,7 +199,7 @@ def translate2(word, lang):
         print("Error Cannot translate: " + word)
 
 
-def sentenceToWord(sentence):
+def sentenceToWord(sentence, model):
     """
 
     Takes a string and converts it into a vector. Then from that it picks a similar word that doesn't contain an underscore. 
@@ -273,18 +272,19 @@ def f(str):
     return str[0] + str[1]
 
 
-def generateSpell(sentence):
+def generateSpell(sentence, model):
     """
     Generates a Spell from a sentence. 
 
     :param sentence: string which is the definition of the spell you want to create.
     :type sentence: str   
     :return: list containing the spell and the spell type.   
-
+    :param model: loaded vector orepresentation of words.
+	:type model: data file loaded.
     """
 
     spell = []
-    vector = sentenceToWord(sentence)
+    vector = sentenceToWord(sentence, model)
     vector = vector[0]
     scale = generateScale(count_instances('spell_prob.csv'))
     selection = random.random()
@@ -313,15 +313,19 @@ def generateSpell(sentence):
 #check whether spells contain other things apart from _underscore like alphanumeric.
 #
 
+def load(path):
+	print("Started") #vector file cannot be in the same location due to github limitations.
+	model = gensim.models.Word2Vec.load_word2vec_format(path, binary=True)
+	model.init_sims(replace=True)  # removes excess ram and trims model.
+	print("Model Trained")
+	return model
+
 
 #main()
 if __name__ == '__main__':
-	print("Started") #vector file cannot be in the same location due to github limitations.
-	model = gensim.models.Word2Vec.load_word2vec_format("../../GoogleNews-vectors-negative300.bin", binary=True)
-	model.init_sims(replace=True)  # removes excess ram and trims model.
-	print("Model Trained")
+	model = load("../../vectors/GoogleNews-vectors-negative300.bin")
 	for i in range(0, 10):
-		print(generateSpell("open the door quietly"))
+		print(generateSpell("open the door quietly", model))
 		print("------------------------------------------")
 
 
