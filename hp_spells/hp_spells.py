@@ -148,11 +148,11 @@ def contains(string, char):
     :type char: str 
     :return: Boolean value.
     """
-
-    if char in string:
-        return True
-    else:
+    if isAlpha(string): 
         return False
+    return True 
+   
+    
 
 
 def langCode(language): #python 2.7 not supported with this function currently.
@@ -196,8 +196,12 @@ def translate2(word, lang):
             return translit(word, lang, reversed=True)
         return out
     except TypeError:
-        print("Error Cannot translate: " + word)
+        log("Error Cannot translate: " + word)
 
+def log(text): 
+    logfile = open("log.txt", "a") 
+    logfile.write(text)
+    logfile.close() 
 
 def sentenceToWord(sentence, model):
     """
@@ -214,7 +218,10 @@ def sentenceToWord(sentence, model):
     top_val = 10
     selected = []
     for word in sentence:
-        output.append(model[word])
+        try:
+            output.append(model[word])
+        except KeyError:
+            log("key error in vector file")
 
     output = np.array(output)
     vector_sum = output.sum(axis=0)
@@ -293,15 +300,15 @@ def generateSpell(sentence, model):
     try:
         target_lang = langCode(spell_meta[1])
     except:
-        print("langCode function didn't work. Using default latin.")
+        log("langCode function didn't work. Using default latin.")
         target_lang = "la"
-    print vector 
+     
     if target_lang == "PL":
         spell.append(pigLatin(vector))
     else:
         spell.append(translate2(vector, target_lang))
     spell.append(spell_meta[0])
-    spells.append(vector) #The original word before translation is also added onto the end for evaluation purposes. 
+    spell.append(vector) #The original word before translation is also added onto the end for evaluation purposes. 
     return spell
 
 
@@ -323,37 +330,24 @@ def load(path):
 
 #main()
 if __name__ == '__main__':
-	model = load("../../vectors/GoogleNews-vectors-negative300.bin")
-	for i in range(0, 10):
-		print(generateSpell("open the door quietly", model))
-		print("------------------------------------------")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    model = load("../../vectors/GoogleNews-vectors-negative300.bin")
+    logFile = open("log.txt", 'w') #the log file is blank at start of each execution 
+    logFile.close() #closes the log file 
+    for i in range(0, 10): 
+        print "---------------", i, "---------------"
+        spellFile = open("spells.csv") 
+        entry = [] 
+        score = 0
+        count = 0 
+        for line in spellFile:
+            count+=1
+            line = line.strip("\n")
+            entry = line.split(",") 
+            spell = generateSpell(entry[1], model) 
+            if spell[2] not in entry[1]: 
+                score +=1 
+        print "score: ", score
+        print "Count: ",  count
+        print "Percentage: ", ((float(score)/count) * 100),"%" 
+        spellFile.close()
 
