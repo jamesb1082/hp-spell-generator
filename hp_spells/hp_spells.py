@@ -148,7 +148,7 @@ def contains(string, char):
     :type char: str 
     :return: Boolean value.
     """
-    if isAlpha(string): 
+    if string.isalpha():  
         return False
     return True 
    
@@ -195,12 +195,12 @@ def translate2(word, lang):
         if lang == 'el':
             return translit(word, lang, reversed=True)
         return out
-    except TypeError:
+    except (KeyError, TypeError):
         log("Error Cannot translate: " + word)
 
 def log(text): 
     logfile = open("log.txt", "a") 
-    logfile.write(text)
+    logfile.write(text+ "\n")
     logfile.close() 
 
 def sentenceToWord(sentence, model):
@@ -227,6 +227,7 @@ def sentenceToWord(sentence, model):
     vector_sum = output.sum(axis=0)
     output = model.most_similar(positive=[vector_sum], topn=top_val)
     final_output = output[randint(0, (top_val - 1))]
+    
     while contains(final_output[0], '_'):
         num = randint(0, top_val - 1)
         final_output = output[num]
@@ -236,7 +237,7 @@ def sentenceToWord(sentence, model):
                 output = model.most_similar(positive=[vector_sum], topn=top_val)
         else:
             selected.append(num)
-
+#    print final_output[0]
     return final_output
 
 
@@ -296,7 +297,7 @@ def generateSpell(sentence, model):
     scale = generateScale(count_instances('spell_prob.csv'))
     selection = random.random()
     spell_meta = getSpellType(scale, selection)
-
+    print vector
     try:
         target_lang = langCode(spell_meta[1])
     except:
@@ -333,7 +334,7 @@ if __name__ == '__main__':
     model = load("../../vectors/GoogleNews-vectors-negative300.bin")
     logFile = open("log.txt", 'w') #the log file is blank at start of each execution 
     logFile.close() #closes the log file 
-    for i in range(0, 10): 
+    for i in range(0, 5): 
         print "---------------", i, "---------------"
         spellFile = open("spells.csv") 
         entry = [] 
