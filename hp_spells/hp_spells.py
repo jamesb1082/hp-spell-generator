@@ -295,13 +295,13 @@ def generateSpell(sentence, model):
     except:
         print("langCode function didn't work. Using default latin.")
         target_lang = "la"
-
-    print("Conversion Language: ", target_lang)
+    print vector 
     if target_lang == "PL":
         spell.append(pigLatin(vector))
     else:
         spell.append(translate2(vector, target_lang))
     spell.append(spell_meta[0])
+    spells.append(vector) #The original word before translation is also added onto the end for evaluation purposes. 
     return spell
 
 
@@ -327,5 +327,33 @@ if __name__ == '__main__':
 	for i in range(0, 10):
 		print(generateSpell("open the door quietly", model))
 		print("------------------------------------------")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
