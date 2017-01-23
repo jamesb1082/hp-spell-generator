@@ -200,7 +200,7 @@ def translate2(word, lang):
 
 def log(text): 
     logfile = open("log.txt", "a") 
-    logfile.write(text+ "\n")
+    logfile.write(text.encode("utf-8") + "\n")
     logfile.close() 
 
 def sentenceToWord(sentence, model):
@@ -221,7 +221,7 @@ def sentenceToWord(sentence, model):
         try:
             output.append(model[word])
         except KeyError:
-            log("key error in vector file")
+            log("key error in vector file" + word)
 
     output = np.array(output)
     vector_sum = output.sum(axis=0)
@@ -332,10 +332,13 @@ def load(path):
 #main()
 if __name__ == '__main__':
     model = load("../../vectors/GoogleNews-vectors-negative300.bin")
-    logFile = open("log.txt", 'w') #the log file is blank at start of each execution 
+    logFile = open("log.txt", 'w' ) #the log file is blank at start of each execution 
     logFile.close() #closes the log file 
-    for i in range(0, 1): 
-        print "---------------", i, "---------------"
+    average = 0.0 
+    iterationCount = 0 
+    for i in range(0, 15): 
+        print  "---------------", i, "---------------"
+        log("---------------"+str(i) +  "---------------")
         spellFile = open("spells.csv") 
         entry = [] 
         score = 0
@@ -351,4 +354,7 @@ if __name__ == '__main__':
         print "Count: ",  count
         print "Percentage: ", ((float(score)/count) * 100),"%" 
         spellFile.close()
-
+        iterationCount +=1 
+        average += (float(score)/count)*100 
+print("Experiment Results")
+print "The Average percentage over ", iterationCount , "tests: ", (average/iterationCount)
