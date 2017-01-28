@@ -5,7 +5,8 @@ from random import randint
 from translate import Translator
 import numpy as np
 from transliterate import translit
-	
+import argparse, sys 
+
 def checkStoredWords(kwords, word):
     """
 	
@@ -331,7 +332,17 @@ def load(path):
 
 #main()
 if __name__ == '__main__':
-    model = load("../../vectors/GoogleNews-vectors-negative300.bin")
+    parser = argparse.ArgumentParser(
+            'Use Word2Vec or GloVe datasets to generate Harry Potter Spells')
+    parser.add_argument('--glove', action='store_const', const = 'glove',
+            help='Use the GloVe dataset instead of the default Word2Vec.')    
+    args = parser.parse_args()
+
+    if args.glove:
+        print "Use of the GloVe vector has not been configured yet" 
+        sys.exit(0) #only temporary untill GloVe vectors are sorted.
+    else:
+         model = load("../../vectors/GoogleNews-vectors-negative300.bin")
     logFile = open("log.txt", 'w' ) #the log file is blank at start of each execution 
     logFile.close() #closes the log file 
     average = 0.0 
