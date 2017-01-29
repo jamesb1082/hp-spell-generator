@@ -84,8 +84,8 @@ def calcProb(data):
     total = totalSpells(data)
     prob = 0.0
     for d in data:
-	prob = d[1] / total
-	d.append(prob)
+	    prob = d[1] / total
+	    d.append(prob)
     return data
 
 
