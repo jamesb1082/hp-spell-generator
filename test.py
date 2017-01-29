@@ -5,8 +5,8 @@ from hp_spells import *
 
 
 def test1():
-	assert contains("james", "_") == False
-	assert contains("test_1", "_") == True
+	assert is_valid("james") == False
+	assert is_valid("test_1") == True
 
 def test2(): 
 	input1 = [
@@ -78,7 +78,6 @@ if __name__ == '__main__':
 	test6()
 	test7()
 	test8()
-	test9()
-	print("All tests have passed.") 
+	test9() 
 	
 

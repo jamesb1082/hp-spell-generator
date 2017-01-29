@@ -1,4 +1,5 @@
 from __future__ import division
+from __future__ import print_function
 import random
 import gensim
 from random import randint
@@ -138,15 +139,12 @@ def getSpellType(scale, rndNum):
     return temp2[1]
 
 
-def contains(string, char):
+def is_valid(string):
     """
-	
-	Checks to see if a string contains a character. 
+    check to see whether a word consists of alpha characters. 
     
-    :param string: The string to be checked. 
-    :param char: The character to be looked for. 
+    :param string: The string to be checked.  
     :type string: str 
-    :type char: str 
     :return: Boolean value.
     """
     if string.isalpha():  
@@ -229,7 +227,7 @@ def sentenceToWord(sentence, model):
     output = model.most_similar(positive=[vector_sum], topn=top_val)
     final_output = output[randint(0, (top_val - 1))]
     
-    while contains(final_output[0], '_'):
+    while is_valid(final_output[0]):
         num = randint(0, top_val - 1)
         final_output = output[num]
         if num in selected:
@@ -322,14 +320,19 @@ def generateSpell(sentence, model):
 #check whether spells contain other things apart from _underscore like alphanumeric.
 #
 
-def load(path):
-	print("Started") #vector file cannot be in the same location due to github limitations.
+def load_word2vec(path):
+	print("Loading Word2Vec...") #vector file cannot be in the same location due to github limitations.
 	model = gensim.models.Word2Vec.load_word2vec_format(path, binary=True)
 	model.init_sims(replace=True)  # removes excess ram and trims model.
-	print("Model Trained")
+	print("Word2Vec loaded")
 	return model
 
-
+def load_glove(path): 
+    print("Loading GloVe...") 
+    model = gensim.models.Word2Vec.load_word2vec_format(path, binary=False)
+    model.init_sims(replace=True) 
+    print("GloVe loaded")
+    return model
 #main()
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
@@ -337,18 +340,24 @@ if __name__ == '__main__':
     parser.add_argument('--glove', action='store_const', const = 'glove',
             help='Use the GloVe dataset instead of the default Word2Vec.')    
     args = parser.parse_args()
-
-    if args.glove:
-        print "Use of the GloVe vector has not been configured yet" 
-        sys.exit(0) #only temporary untill GloVe vectors are sorted.
-    else:
-         model = load("../../vectors/GoogleNews-vectors-negative300.bin")
+   
     logFile = open("log.txt", 'w' ) #the log file is blank at start of each execution 
     logFile.close() #closes the log file 
+ 
+    if args.glove:
+        print("Vectors used: GloVe")
+        log("---------------" +  "Vectors used: GloVe"+ "---------------")
+        model = load_glove("../../vectors/glove.txt.vw") 
+        
+    else:
+        print("Vectors used: Word2Vec")
+        log("---------------"+ "Vectors used: Word2Vec"+ "---------------")
+        model = load_word2vec("../../vectors/GoogleNews-vectors-negative300.bin")
+
     average = 0.0 
     iterationCount = 0 
-    for i in range(0, 15): 
-        print  "---------------", i, "---------------"
+    for i in range(0, 4): 
+        print("---------------", i, "---------------")
         log("---------------"+str(i) +  "---------------")
         spellFile = open("spells.csv") 
         entry = [] 
@@ -361,11 +370,11 @@ if __name__ == '__main__':
             spell = generateSpell(entry[1], model) 
             if spell[2] not in entry[1]: 
                 score +=1 
-        print "score: ", score
-        print "Count: ",  count
-        print "Percentage: ", ((float(score)/count) * 100),"%" 
+        print("score: ", score)
+        print("Count: ",  count)
+        print("Percentage: ", ((float(score)/count) * 100),"%") 
         spellFile.close()
         iterationCount +=1 
         average += (float(score)/count)*100 
 print("Experiment Results")
-print "The Average percentage over ", iterationCount , "tests: ", (average/iterationCount)
+print("The Average percentage over ", iterationCount , "tests: ", (average/iterationCount))
