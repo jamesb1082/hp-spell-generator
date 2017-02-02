@@ -11,7 +11,9 @@ import argparse, sys
 def checkStoredWords(kwords, word):
     """
 	
-	This function updates a list of known words with a new word. If the spell type and language exists in the list the value is append by 1 otherwise, it is appended to the end of the list with a value of 1. 
+	This function updates a list of known words with a new word. If the spell type and
+    language exists in the list the value is append by 1 otherwise, it is appended to 
+    the end of the list with a value of 1. 
 
     :param kwords: List of spell types and language with associated frequencies.  
     :param word: One being the spell type and the other being the origin language.
@@ -35,8 +37,8 @@ def checkStoredWords(kwords, word):
 def count_instances(fname):
     """
 	
-	Reads supplied file, where it splits it up. Then it appends each word to the data set building a list of words and frequencies using checkStoredWords(kwords, word). 
-
+	Reads supplied file, where it splits it up. Then it appends each word to the data
+    set building a list of words and frequencies using checkStoredWords(kwords, word). 
 
     :param fname: This is the name of the CSV file in which the spell data is stored.
     :type fname: str
@@ -53,6 +55,7 @@ def count_instances(fname):
     file.close()
     data = calcProb(data)
     return data
+
 
 
 def totalSpells(data):
@@ -92,7 +95,8 @@ def calcProb(data):
 def generateScale(data):
     """
 	
-	This stacks the probabilities of spells so that each spell has a boundary in which it a spell can be selected over another.
+	This stacks the probabilities of spells so that each spell has a boundary in which
+    it a spell can be selected over another.
 
     :param data: list of spell names and their associated frequencies and probabilities. 
     :type data: [[[str,str],int,float]...]
@@ -313,27 +317,30 @@ def generateSpell(sentence, model):
 
 
 
-#Notes For further development
-#When iteratered through 100 times. it only produces "latin" spells of type charm. PRobability is 0. MIGHT WORK FOR 3.5
-#This should not be the case.
-#It needs investigated more throughly
-#check whether spells contain other things apart from _underscore like alphanumeric.
-#
+def load_glove(path, ): 
+    """
+    This function loads the GloVe vectors which are located by a given path. 
+    As the glove Vectors are not a binary, it has to be loaded differently to
+    Word2Vec. 
 
-def load_word2vec(path):
-	print("Loading Word2Vec...") #vector file cannot be in the same location due to github limitations.
-	model = gensim.models.Word2Vec.load_word2vec_format(path, binary=True)
-	model.init_sims(replace=True)  # removes excess ram and trims model.
-	print("Word2Vec loaded")
-	return model
-
-def load_glove(path): 
+    @param path: The path to the GloVe file. 
+    @type path: str 
+    @return model: This is the model with the vectors loaded. 
+    """
     print("Loading GloVe...") 
     model = gensim.models.Word2Vec.load_word2vec_format(path, binary=False)
     model.init_sims(replace=True) 
     print("GloVe loaded")
     return model
-#main()
+def load_vectors(path, is_binary): 
+    print("Loading: ", path) 
+    model = gensim.models.Word2Vec.load_word2vec_format(path, binary=is_binary)
+    model.init_sims(replace=True) 
+    print(path, " loaded")
+    return model 
+# ==================================================================================
+# Main part of the program. 
+# ==================================================================================
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
             'Use Word2Vec or GloVe datasets to generate Harry Potter Spells')
@@ -347,16 +354,15 @@ if __name__ == '__main__':
     if args.glove:
         print("Vectors used: GloVe")
         log("---------------" +  "Vectors used: GloVe"+ "---------------")
-        model = load_glove("../../vectors/glove.txt.vw") 
+        model = load_vectors("../../vectors/glove.txt.vw", False) 
         
     else:
         print("Vectors used: Word2Vec")
         log("---------------"+ "Vectors used: Word2Vec"+ "---------------")
-        model = load_word2vec("../../vectors/GoogleNews-vectors-negative300.bin")
-
+        model = load_vectors("../../vectors/GoogleNews-vectors-negative300.bin", True) 
     average = 0.0 
     iterationCount = 0 
-    for i in range(0, 4): 
+    for i in range(0, 1): 
         print("---------------", i, "---------------")
         log("---------------"+str(i) +  "---------------")
         spellFile = open("spells.csv") 
@@ -366,9 +372,12 @@ if __name__ == '__main__':
         for line in spellFile:
             count+=1
             line = line.strip("\n")
-            entry = line.split(",") 
+            entry = line.split(",")
+             
             spell = generateSpell(entry[1], model) 
-            if spell[2] not in entry[1]: 
+            # spells is reduced to lower case to make sure "Bat" is same as "bat". 
+            # definitin is split into words. 
+            if spell[2].lower() in entry[1].split():  
                 score +=1 
         print("score: ", score)
         print("Count: ",  count)
@@ -376,5 +385,6 @@ if __name__ == '__main__':
         spellFile.close()
         iterationCount +=1 
         average += (float(score)/count)*100 
-print("Experiment Results")
-print("The Average percentage over ", iterationCount , "tests: ", (average/iterationCount))
+print("----------------Experiment Results------------------")
+print("The mean average percentage over ", iterationCount , "tests: ",
+        (average/iterationCount), "%")
