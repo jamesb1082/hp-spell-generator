@@ -316,27 +316,11 @@ def generateSpell(sentence, model):
     return spell
 
 
-
-def load_glove(path, ): 
-    """
-    This function loads the GloVe vectors which are located by a given path. 
-    As the glove Vectors are not a binary, it has to be loaded differently to
-    Word2Vec. 
-
-    @param path: The path to the GloVe file. 
-    @type path: str 
-    @return model: This is the model with the vectors loaded. 
-    """
-    print("Loading GloVe...") 
-    model = gensim.models.Word2Vec.load_word2vec_format(path, binary=False)
-    model.init_sims(replace=True) 
-    print("GloVe loaded")
-    return model
 def load_vectors(path, is_binary): 
     print("Loading: ", path) 
     model = gensim.models.Word2Vec.load_word2vec_format(path, binary=is_binary)
     model.init_sims(replace=True) 
-    print(path, " loaded")
+    print("Loaded: ", path)
     return model 
 # ==================================================================================
 # Main part of the program. 
