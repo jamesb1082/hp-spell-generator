@@ -1,6 +1,5 @@
 ---------------Vectors used: Word2Vec---------------
 ---------------0---------------
 key error in vector filea
-Error Cannot translate: Sliding
 key error in vector filea
 key error in vector fileand
