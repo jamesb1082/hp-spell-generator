@@ -7,6 +7,7 @@ from translate import Translator
 import numpy as np
 from transliterate import translit
 import argparse, sys 
+import matplotlib.pyplot  as plt 
 
 def checkStoredWords(kwords, word):
     """
@@ -345,8 +346,9 @@ if __name__ == '__main__':
         log("---------------"+ "Vectors used: Word2Vec"+ "---------------")
         model = load_vectors("../../vectors/GoogleNews-vectors-negative300.bin", True) 
     average = 0.0 
-    iterationCount = 0 
-    for i in range(0, 1): 
+    iterationCount = 0
+    scores = [] 
+    for i in range(0, 8): 
         print("---------------", i, "---------------")
         log("---------------"+str(i) +  "---------------")
         spellFile = open("spells.csv") 
@@ -366,9 +368,16 @@ if __name__ == '__main__':
         print("score: ", score)
         print("Count: ",  count)
         print("Percentage: ", ((float(score)/count) * 100),"%") 
+        scores.append(score)  
         spellFile.close()
         iterationCount +=1 
         average += (float(score)/count)*100 
-print("----------------Experiment Results------------------")
-print("The mean average percentage over ", iterationCount , "tests: ",
-        (average/iterationCount), "%")
+    print("----------------Experiment Results------------------")
+    print("The mean average percentage over ", iterationCount , "tests: ",
+            (average/iterationCount), "%")
+    
+
+    plt.plot([x for x in range(len(scores))], scores) 
+    plt.ylabel("Number of words generated that existed in definition") 
+    plt.xlabel("Experiment number") 
+    plt.show()
