@@ -8,6 +8,7 @@ import numpy as np
 from transliterate import translit
 import argparse, sys 
 import matplotlib.pyplot  as plt 
+from scipy.spatial import distance 
 
 def checkStoredWords(kwords, word):
     """
@@ -313,16 +314,22 @@ def generateSpell(sentence, model):
     else:
         spell.append(translate2(vector, target_lang))
     spell.append(spell_meta[0])
-    spell.append(vector) #The original word before translation is also added onto the end for evaluation purposes. 
-    return spell
-
-
+    spell.append(vector) #The original word before translation is also added onto the end for evaluation purposes.
+    return spell 
 def load_vectors(path, is_binary): 
     print("Loading: ", path) 
     model = gensim.models.Word2Vec.load_word2vec_format(path, binary=is_binary)
     model.init_sims(replace=True) 
     print("Loaded: ", path)
     return model 
+
+
+def graph(scores):
+    plt.gca().set_ylim([0,40]) 
+    plt.plot([x for x in range(len(scores))], scores) 
+    plt.ylabel("Number of words generated that existed in definition") 
+    plt.xlabel("Experiment number") 
+    plt.show()
 # ==================================================================================
 # Main part of the program. 
 # ==================================================================================
@@ -348,7 +355,10 @@ if __name__ == '__main__':
     average = 0.0 
     iterationCount = 0
     scores = [] 
-    for i in range(0, 8): 
+    cos_dists = [] 
+    avg_cos_dists = [] 
+
+    for i in range(0, 100): 
         print("---------------", i, "---------------")
         log("---------------"+str(i) +  "---------------")
         spellFile = open("spells.csv") 
@@ -360,24 +370,36 @@ if __name__ == '__main__':
             line = line.strip("\n")
             entry = line.split(",")
              
-            spell = generateSpell(entry[1], model) 
+            spell = generateSpell(entry[1], model)
+             
             # spells is reduced to lower case to make sure "Bat" is same as "bat". 
             # definitin is split into words. 
             if spell[2].lower() in entry[1].split():  
-                score +=1 
-        print("score: ", score)
-        print("Count: ",  count)
+                score +=1
+            #calculate the cosine simalarity. 
+           
+            og_wd = model[entry[-1].strip()] 
+            nw_wd = model[spell[-1]]
+            cos_dists.append(distance.cosine(og_wd, nw_wd))   
+             
+        print("-------------------------------------")   
+        print("Num of spells that feature in definition: ", score)       
         print("Percentage: ", ((float(score)/count) * 100),"%") 
+        print("Average Cosine-simalarity:", float(sum(cos_dists) / len(cos_dists)))  
         scores.append(score)  
         spellFile.close()
         iterationCount +=1 
-        average += (float(score)/count)*100 
+        average += (float(score)/count)*100
+        avg_cos_dists.append(float(sum(cos_dists) / len(cos_dists))) 
+
     print("----------------Experiment Results------------------")
     print("The mean average percentage over ", iterationCount , "tests: ",
             (average/iterationCount), "%")
+    print("The mean cosine simalarity over ", iterationCount, "tests: ", 
+            float(sum(avg_cos_dists)/ len(avg_cos_dists)))
     
-
-    plt.plot([x for x in range(len(scores))], scores) 
-    plt.ylabel("Number of words generated that existed in definition") 
-    plt.xlabel("Experiment number") 
+    plt.scatter( scores, avg_cos_dists) 
+    plt.ylabel("Average Cosine simalarity") 
+    plt.xlabel("score for experiment") 
     plt.show()
+    graph(scores)
