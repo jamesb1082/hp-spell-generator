@@ -220,7 +220,7 @@ def sentenceToWord(sentence, model):
 
     sentence = sentence.split()
     output = []
-    top_val = 10
+    top_val = 20
     selected = []
     for word in sentence:
         try:
@@ -358,7 +358,7 @@ if __name__ == '__main__':
     cos_dists = [] 
     avg_cos_dists = [] 
 
-    for i in range(0, 100): 
+    for i in range(0, 200): 
         print("---------------", i, "---------------")
         log("---------------"+str(i) +  "---------------")
         spellFile = open("spells.csv") 
@@ -382,7 +382,6 @@ if __name__ == '__main__':
             nw_wd = model[spell[-1]]
             cos_dists.append(distance.cosine(og_wd, nw_wd))   
              
-        print("-------------------------------------")   
         print("Num of spells that feature in definition: ", score)       
         print("Percentage: ", ((float(score)/count) * 100),"%") 
         print("Average Cosine-simalarity:", float(sum(cos_dists) / len(cos_dists)))  
@@ -398,7 +397,12 @@ if __name__ == '__main__':
     print("The mean cosine simalarity over ", iterationCount, "tests: ", 
             float(sum(avg_cos_dists)/ len(avg_cos_dists)))
     
-    plt.scatter( scores, avg_cos_dists) 
+    m,b = np.polyfit(scores,avg_cos_dists,1) 
+
+    best_fit = [(m * x) + b for x in range(min(scores), max(scores)+1)] 
+    basic_scale = [x for x in range(min(scores), max(scores)+1)]  
+    plt.plot( scores, avg_cos_dists, '.') 
+    plt.plot(basic_scale, best_fit, '-') 
     plt.ylabel("Average Cosine simalarity") 
     plt.xlabel("score for experiment") 
     plt.show()
