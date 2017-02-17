@@ -220,7 +220,7 @@ def sentenceToWord(sentence, model):
 
     sentence = sentence.split()
     output = []
-    top_val = 20
+    top_val = 10
     selected = []
     for word in sentence:
         try:
@@ -359,7 +359,7 @@ if __name__ == '__main__':
     cos_dists = [] 
     avg_cos_dists = [] 
 
-    for i in range(0, 200): 
+    for i in range(0, 1): 
         print("---------------", i, "---------------")
         log("---------------"+str(i) +  "---------------")
         spellFile = open("spells.csv") 

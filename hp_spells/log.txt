@@ -1,1 +1,15 @@
 ---------------Vectors used: Word2Vec---------------
+---------------0---------------
+Error Cannot translate: Summoning
+Error Cannot translate: obfuscate
+Error Cannot translate: unfillable
+Error Cannot translate: reattaching
+key error in vector filea
+Error Cannot translate: impede
+Error Cannot translate: arbors
+Error Cannot translate: transfixed
+key error in vector filea
+Error Cannot translate: uneventful
+Error Cannot translate: reaffirm
+Error Cannot translate: imprecations
+key error in vector fileand
