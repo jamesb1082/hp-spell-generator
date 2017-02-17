@@ -316,6 +316,7 @@ def generateSpell(sentence, model):
     spell.append(spell_meta[0])
     spell.append(vector) #The original word before translation is also added onto the end for evaluation purposes.
     return spell 
+
 def load_vectors(path, is_binary): 
     print("Loading: ", path) 
     model = gensim.models.Word2Vec.load_word2vec_format(path, binary=is_binary)
