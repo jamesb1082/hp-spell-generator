@@ -9,6 +9,8 @@ from transliterate import translit
 import argparse, sys 
 import matplotlib.pyplot  as plt 
 from scipy.spatial import distance 
+import seaborn as sns 
+
 
 def checkStoredWords(kwords, word):
     """
@@ -331,6 +333,27 @@ def graph(scores):
     plt.ylabel("Number of words generated that existed in definition") 
     plt.xlabel("Experiment number") 
     plt.show()
+
+def cosine_graph(scores, avg_cos_dists): 
+    m,b = np.polyfit(scores,avg_cos_dists,1) 
+
+    best_fit = [(m * x) + b for x in range(min(scores), max(scores)+1)] 
+    basic_scale = [x for x in range(min(scores), max(scores)+1)]  
+    plt.plot( scores, avg_cos_dists, '.') 
+    plt.plot(basic_scale, best_fit, '-') 
+    plt.ylabel("Average Cosine simalarity") 
+    plt.xlabel("score for experiment") 
+    plt.show()
+
+def sns_cos_hist(avg_cos):
+    sns.set(color_codes=True) 
+    sns.distplot(avg_cos) 
+    sns.plt.show() 
+
+def sns_score_hist(scores): 
+    sns.set(color_codes=True)
+    sns.distplot(scores) 
+    sns.plt.show() 
 # ==================================================================================
 # Main part of the program. 
 # ==================================================================================
@@ -359,7 +382,7 @@ if __name__ == '__main__':
     cos_dists = [] 
     avg_cos_dists = [] 
 
-    for i in range(0, 1): 
+    for i in range(0, 500): 
         print("---------------", i, "---------------")
         log("---------------"+str(i) +  "---------------")
         spellFile = open("spells.csv") 
@@ -397,14 +420,7 @@ if __name__ == '__main__':
             (average/iterationCount), "%")
     print("The mean cosine simalarity over ", iterationCount, "tests: ", 
             float(sum(avg_cos_dists)/ len(avg_cos_dists)))
-    
-    m,b = np.polyfit(scores,avg_cos_dists,1) 
-
-    best_fit = [(m * x) + b for x in range(min(scores), max(scores)+1)] 
-    basic_scale = [x for x in range(min(scores), max(scores)+1)]  
-    plt.plot( scores, avg_cos_dists, '.') 
-    plt.plot(basic_scale, best_fit, '-') 
-    plt.ylabel("Average Cosine simalarity") 
-    plt.xlabel("score for experiment") 
-    plt.show()
+    cosine_graph(scores, avg_cos_dists)  
     graph(scores)
+    sns_score_hist(scores) 
+    sns_cos_hist(avg_cos_dists) 
