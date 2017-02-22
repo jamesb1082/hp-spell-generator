@@ -333,7 +333,7 @@ def load_vectors(path, is_binary):
 
 def is_synonym(n_word, o_word):
     """
-    This function uses a combination of NLTK's wordnet and PyDictionary to 
+    This function uses a combination of NLTK's wordnet to 
     list all synonyms for a word and to check if a new word is a synonym. 
     @param n_word: The new word generated. 
     @type n_word: str 
@@ -341,7 +341,6 @@ def is_synonym(n_word, o_word):
     @type o_word: str
     """
     synonyms=[]
-    dictionary = PyDictionary()
     synsets = wordnet.synsets(o_word)
     for synset in synsets:
         synonyms = synonyms+ synset.lemma_names()
