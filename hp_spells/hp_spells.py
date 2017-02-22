@@ -10,7 +10,7 @@ import argparse, sys
 import matplotlib.pyplot  as plt 
 from scipy.spatial import distance 
 import seaborn as sns 
-
+import pandas as pd 
 
 def checkStoredWords(kwords, word):
     """
@@ -283,7 +283,8 @@ def f(str):
     :return: a string that only contains the first two letters.  
     
     """
-
+    if len(str) ==1:
+        return str[0]
     return str[0] + str[1]
 
 
@@ -326,34 +327,6 @@ def load_vectors(path, is_binary):
     print("Loaded: ", path)
     return model 
 
-
-def graph(scores):
-    plt.gca().set_ylim([0,40]) 
-    plt.plot([x for x in range(len(scores))], scores) 
-    plt.ylabel("Number of words generated that existed in definition") 
-    plt.xlabel("Experiment number") 
-    plt.show()
-
-def cosine_graph(scores, avg_cos_dists): 
-    m,b = np.polyfit(scores,avg_cos_dists,1) 
-
-    best_fit = [(m * x) + b for x in range(min(scores), max(scores)+1)] 
-    basic_scale = [x for x in range(min(scores), max(scores)+1)]  
-    plt.plot( scores, avg_cos_dists, '.') 
-    plt.plot(basic_scale, best_fit, '-') 
-    plt.ylabel("Average Cosine simalarity") 
-    plt.xlabel("score for experiment") 
-    plt.show()
-
-def sns_cos_hist(avg_cos):
-    sns.set(color_codes=True) 
-    sns.distplot(avg_cos) 
-    sns.plt.show() 
-
-def sns_score_hist(scores): 
-    sns.set(color_codes=True)
-    sns.distplot(scores) 
-    sns.plt.show() 
 # ==================================================================================
 # Main part of the program. 
 # ==================================================================================
@@ -362,11 +335,17 @@ if __name__ == '__main__':
             'Use Word2Vec or GloVe datasets to generate Harry Potter Spells')
     parser.add_argument('--glove', action='store_const', const = 'glove',
             help='Use the GloVe dataset instead of the default Word2Vec.')    
+    parser.add_argument('--exp',
+    help="Specifies the number of experiments on this run. Default is 20.",
+            action='store', type=int)
     args = parser.parse_args()
    
     logFile = open("log.txt", 'w' ) #the log file is blank at start of each execution 
     logFile.close() #closes the log file 
- 
+    num_experiments = 20 
+    if args.exp != None: 
+        num_experiments = args.exp 
+
     if args.glove:
         print("Vectors used: GloVe")
         log("---------------" +  "Vectors used: GloVe"+ "---------------")
@@ -382,7 +361,7 @@ if __name__ == '__main__':
     cos_dists = [] 
     avg_cos_dists = [] 
 
-    for i in range(0, 500): 
+    for i in range(0, num_experiments): 
         print("---------------", i, "---------------")
         log("---------------"+str(i) +  "---------------")
         spellFile = open("spells.csv") 
@@ -420,7 +399,9 @@ if __name__ == '__main__':
             (average/iterationCount), "%")
     print("The mean cosine simalarity over ", iterationCount, "tests: ", 
             float(sum(avg_cos_dists)/ len(avg_cos_dists)))
-    cosine_graph(scores, avg_cos_dists)  
-    graph(scores)
-    sns_score_hist(scores) 
-    sns_cos_hist(avg_cos_dists) 
+    results = pd.DataFrame({'scores': scores, 'simalarity': avg_cos_dists}) 
+    ax2 = sns.violinplot(x=results["simalarity"]) 
+    sns.plt.show() 
+    ax = sns.violinplot(x="scores", y="simalarity", data=results) 
+    sns.plt.show()  
+
