@@ -12,8 +12,6 @@ from scipy.spatial import distance
 import seaborn as sns 
 import pandas as pd 
 from nltk.corpus import wordnet 
-from PyDictionary import PyDictionary 
-import warnings 
 
 def checkStoredWords(kwords, word):
     """
@@ -347,9 +345,6 @@ def is_synonym(n_word, o_word):
     synsets = wordnet.synsets(o_word)
     for synset in synsets:
         synonyms = synonyms+ synset.lemma_names()
-        with warnings.catch_warnings(): #pydictionary.synonym() always displays warning. 
-            warnings.simplefilter("ignore")
-    #        synonyms = synonyms + dictionary.synonym(o_word)
     return n_word in synonyms 
                             
 # Main part of the program. 
