@@ -11,6 +11,9 @@ import matplotlib.pyplot  as plt
 from scipy.spatial import distance 
 import seaborn as sns 
 import pandas as pd 
+from nltk.corpus import wordnet 
+from PyDictionary import PyDictionary 
+import warnings 
 
 def checkStoredWords(kwords, word):
     """
@@ -327,7 +330,28 @@ def load_vectors(path, is_binary):
     print("Loaded: ", path)
     return model 
 
-# ==================================================================================
+ 
+
+
+def is_synonym(n_word, o_word):
+    """
+    This function uses a combination of NLTK's wordnet and PyDictionary to 
+    list all synonyms for a word and to check if a new word is a synonym. 
+    @param n_word: The new word generated. 
+    @type n_word: str 
+    @param o_word: The original word in the definition. 
+    @type o_word: str
+    """
+    synonyms=[]
+    dictionary = PyDictionary()
+    synsets = wordnet.synsets(o_word)
+    for synset in synsets:
+        synonyms = synonyms+ synset.lemma_names()
+        with warnings.catch_warnings(): #pydictionary.synonym() always displays warning. 
+            warnings.simplefilter("ignore")
+    #        synonyms = synonyms + dictionary.synonym(o_word)
+    return n_word in synonyms 
+                            
 # Main part of the program. 
 # ==================================================================================
 if __name__ == '__main__':
@@ -360,14 +384,15 @@ if __name__ == '__main__':
     scores = [] 
     cos_dists = [] 
     avg_cos_dists = [] 
-
-    for i in range(0, num_experiments): 
+    syn_experiments = [] 
+    for i in range(0, num_experiments):
         print("---------------", i, "---------------")
         log("---------------"+str(i) +  "---------------")
         spellFile = open("spells.csv") 
         entry = [] 
         score = 0
-        count = 0 
+        count = 0
+        syn_counts = 0 
         for line in spellFile:
             count+=1
             line = line.strip("\n")
@@ -384,11 +409,14 @@ if __name__ == '__main__':
             og_wd = model[entry[-1].strip()] 
             nw_wd = model[spell[-1]]
             cos_dists.append(distance.cosine(og_wd, nw_wd))   
-             
+            if is_synonym(spell[2].lower(), entry[-1]): 
+                syn_counts +=1
         print("Num of spells that feature in definition: ", score)       
         print("Percentage: ", ((float(score)/count) * 100),"%") 
         print("Average Cosine-simalarity:", float(sum(cos_dists) / len(cos_dists)))  
-        scores.append(score)  
+        print("Num of spells which are a synonyms: ", syn_counts)
+        scores.append(score) 
+        syn_experiments.append(syn_counts) 
         spellFile.close()
         iterationCount +=1 
         average += (float(score)/count)*100
@@ -399,6 +427,7 @@ if __name__ == '__main__':
             (average/iterationCount), "%")
     print("The mean cosine simalarity over ", iterationCount, "tests: ", 
             float(sum(avg_cos_dists)/ len(avg_cos_dists)))
+    print("The mean amount of synonyms", (sum(syn_experiments)/ iterationCount))
     results = pd.DataFrame({'scores': scores, 'simalarity': avg_cos_dists}) 
     ax2 = sns.violinplot(x=results["simalarity"]) 
     sns.plt.show() 
