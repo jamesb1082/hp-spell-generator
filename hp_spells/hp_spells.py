@@ -402,7 +402,7 @@ if __name__ == '__main__':
            
             og_wd = model[entry[-1].strip()] 
             nw_wd = model[spell[-1]]
-            cos_dists.append(distance.cosine(og_wd, nw_wd))   
+            cos_dists.append(distance.cosine(og_wd, nw_wd))#added log to improve output graph.    
             if is_synonym(spell[2].lower(), entry[-1]): 
                 syn_counts +=1
         print("Num of spells that feature in definition: ", score)       
@@ -414,7 +414,7 @@ if __name__ == '__main__':
         spellFile.close()
         iterationCount +=1 
         average += (float(score)/count)*100
-        avg_cos_dists.append(float(sum(cos_dists) / len(cos_dists))) 
+        avg_cos_dists.append(float(sum(cos_dists) / len(cos_dists)))
 
     print("----------------Experiment Results------------------")
     print("The mean average percentage over ", iterationCount , "tests: ",
