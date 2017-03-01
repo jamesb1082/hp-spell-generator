@@ -1,1 +1,21 @@
----------------Vectors used: GloVe---------------
+---------------Vectors used: Word2Vec---------------
+---------------0---------------
+key error in vector filea
+key error in vector filea
+key error in vector fileand
+---------------1---------------
+key error in vector filea
+key error in vector filea
+key error in vector fileand
+---------------2---------------
+key error in vector filea
+key error in vector filea
+key error in vector fileand
+---------------3---------------
+key error in vector filea
+key error in vector filea
+key error in vector fileand
+---------------4---------------
+key error in vector filea
+key error in vector filea
+key error in vector fileand

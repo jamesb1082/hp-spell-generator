@@ -345,7 +345,55 @@ def is_synonym(n_word, o_word):
     for synset in synsets:
         synonyms = synonyms+ synset.lemma_names()
     return n_word in synonyms 
-                            
+
+def joint_plot(scores, cosines): 
+    a = 0 #Dummy Value  
+
+
+def run_experiment(model, num_experiments): 
+    average = 0.0 
+    iterationCount = 0
+    scores = [] 
+    cos_dists = [] 
+    avg_cos_dists = [] 
+    syn_experiments = [] 
+    for i in range(0, num_experiments):
+        print("---------------", i, "---------------")
+        log("---------------"+str(i) +  "---------------")
+        spellFile = open("spells.csv") 
+        entry = [] 
+        score = 0
+        count = 0
+        syn_counts = 0 
+        for line in spellFile:
+            count+=1
+            line = line.strip("\n")
+            entry = line.split(",")
+             
+            spell = generateSpell(entry[1], model) 
+            if spell[2].lower() in entry[1].split():  
+                score +=1
+            #calculate the cosine similarity. 
+           
+            og_wd = model[entry[-1].strip()] 
+            nw_wd = model[spell[-1]]
+            cos_dists.append(distance.cosine(og_wd, nw_wd))#added log to improve output graph.    
+            if is_synonym(spell[2].lower(), entry[-1]): 
+                syn_counts +=1
+        print("Num of spells that feature in definition: ", score)       
+        print("Percentage: ", ((float(score)/count) * 100),"%") 
+        print("Average Cosine-simalarity:", float(sum(cos_dists) / len(cos_dists)))  
+        print("Num of spells which are a synonyms: ", syn_counts)
+        scores.append(score) 
+        syn_experiments.append(syn_counts) 
+        spellFile.close()
+        iterationCount +=1 
+        average += (float(score)/count)*100
+        avg_cos_dists.append(float(sum(cos_dists) / len(cos_dists)))
+    return scores, syn_experiments,average, avg_cos_dists, iterationCount        
+
+
+
 # Main part of the program. 
 # ==================================================================================
 if __name__ == '__main__':
@@ -373,58 +421,21 @@ if __name__ == '__main__':
         print("Vectors used: Word2Vec")
         log("---------------"+ "Vectors used: Word2Vec"+ "---------------")
         model = load_vectors("../../vectors/GoogleNews-vectors-negative300.bin", True) 
-    average = 0.0 
-    iterationCount = 0
-    scores = [] 
-    cos_dists = [] 
-    avg_cos_dists = [] 
-    syn_experiments = [] 
-    for i in range(0, num_experiments):
-        print("---------------", i, "---------------")
-        log("---------------"+str(i) +  "---------------")
-        spellFile = open("spells.csv") 
-        entry = [] 
-        score = 0
-        count = 0
-        syn_counts = 0 
-        for line in spellFile:
-            count+=1
-            line = line.strip("\n")
-            entry = line.split(",")
-             
-            spell = generateSpell(entry[1], model)
-             
-            # spells is reduced to lower case to make sure "Bat" is same as "bat". 
-            # definitin is split into words. 
-            if spell[2].lower() in entry[1].split():  
-                score +=1
-            #calculate the cosine simalarity. 
-           
-            og_wd = model[entry[-1].strip()] 
-            nw_wd = model[spell[-1]]
-            cos_dists.append(distance.cosine(og_wd, nw_wd))#added log to improve output graph.    
-            if is_synonym(spell[2].lower(), entry[-1]): 
-                syn_counts +=1
-        print("Num of spells that feature in definition: ", score)       
-        print("Percentage: ", ((float(score)/count) * 100),"%") 
-        print("Average Cosine-simalarity:", float(sum(cos_dists) / len(cos_dists)))  
-        print("Num of spells which are a synonyms: ", syn_counts)
-        scores.append(score) 
-        syn_experiments.append(syn_counts) 
-        spellFile.close()
-        iterationCount +=1 
-        average += (float(score)/count)*100
-        avg_cos_dists.append(float(sum(cos_dists) / len(cos_dists)))
-
+    
+    
+    scores, syn_experiments, average, avg_cos_dists, iterationCount = run_experiment(model, num_experiments)       
     print("----------------Experiment Results------------------")
     print("The mean average percentage over ", iterationCount , "tests: ",
             (average/iterationCount), "%")
     print("The mean cosine simalarity over ", iterationCount, "tests: ", 
             float(sum(avg_cos_dists)/ len(avg_cos_dists)))
     print("The mean amount of synonyms", (sum(syn_experiments)/ iterationCount))
-    results = pd.DataFrame({'scores': scores, 'simalarity': avg_cos_dists}) 
-    ax2 = sns.violinplot(x=results["simalarity"]) 
+    results = pd.DataFrame({'scores': scores, 'similarity': avg_cos_dists}) 
+    ax2 = sns.violinplot(x=results["similarity"]) 
     sns.plt.show() 
-    ax = sns.violinplot(x="scores", y="simalarity", data=results) 
+    ax = sns.violinplot(x="scores", y="similarity", data=results) 
     sns.plt.show()  
-
+    joint_graph = sns.jointplot(x="scores", y="similarity", data=results, kind="reg") 
+    sns.plt.show() 
+    hex_graph = sns.jointplot(x="scores", y="similarity", data=results, kind="hex") 
+    sns.plt.show() 
