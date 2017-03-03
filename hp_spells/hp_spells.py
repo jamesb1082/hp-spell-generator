@@ -394,7 +394,7 @@ def run_experiment(model, num_experiments):
         print("Average Cosine-simalarity:", float(sum(cos_dists) / len(cos_dists)))  
         print("Num of spells which are synonyms: ", syn_counts)
         print("Num of words selected that are not real words: ", bogus_words) 
-        scores.append(score) 
+        scores.append((float(score)/count) * 100) 
         syn_experiments.append(syn_counts)
         bword_counts.append(bogus_words) 
         spellFile.close()
@@ -417,6 +417,8 @@ if __name__ == '__main__':
             action='store', type=int)
     parser.add_argument('--verbose', action='store_const', const = 'verbose',
             help='Prints out the spell names') 
+    parser.add_argument('--comp', action= 'store_const', const='comp', 
+            help = "Runs the word2vec vectors, and the GloVe vectors") 
     args = parser.parse_args()
    
     logFile = open("log.txt", 'w' ) #the log file is blank at start of each execution 
@@ -424,36 +426,52 @@ if __name__ == '__main__':
     num_experiments = 20 
     if args.exp != None: 
         num_experiments = args.exp 
-
-    if args.glove:
+    if args.comp:
+        print("Compare Mode") 
+        log("----------------------Compare Mode-----------------------")
+        print("Vectors used: Word2Vec")
+        log("---------------"+ "Vectors used: Word2Vec"+ "---------------")
+        model = load_vectors("../../vectors/GoogleNews-vectors-negative300.bin", True)  
+        w_scores, w_syn_experiments, w_average, w_avg_cos_dists, iterationCount, w_bword_counts= run_experiment(model, num_experiments)    
+        w_results = pd.DataFrame({'scores': w_scores, 'synonyms' :w_syn_experiments, "similarity": w_avg_cos_dists, "b_words":w_bword_counts})
+        print(w_results)
+        del model 
         print("Vectors used: GloVe")
         log("---------------" +  "Vectors used: GloVe"+ "---------------")
         model = load_vectors("../../vectors/glove.txt.vw", False) 
+        g_scores, g_syn_experiments, g_average, g_avg_cos_dists, iterationCount, g_bword_counts= run_experiment(model, num_experiments)  
+        #==================TO DO ============
+        #Take glove data and put in a data frame like word 2vec. 
+        #Then print out some cool graphs and print out experiment results 
+    else: 
+        if args.glove:
+            print("Vectors used: GloVe")
+            log("---------------" +  "Vectors used: GloVe"+ "---------------")
+            model = load_vectors("../../vectors/glove.txt.vw", False) 
+        else:
+            print("Vectors used: Word2Vec")
+            log("---------------"+ "Vectors used: Word2Vec"+ "---------------")
+            model = load_vectors("../../vectors/GoogleNews-vectors-negative300.bin", True) 
         
-    else:
-        print("Vectors used: Word2Vec")
-        log("---------------"+ "Vectors used: Word2Vec"+ "---------------")
-        model = load_vectors("../../vectors/GoogleNews-vectors-negative300.bin", True) 
-    
-    
-    scores, syn_experiments, average, avg_cos_dists, iterationCount, bword_counts= run_experiment(model, num_experiments)       
-    print("----------------Experiment Results------------------")
-    print("The mean average percentage over ", iterationCount , "tests: ",
-            (average/iterationCount), "%")
-    print("The mean cosine simalarity over ", iterationCount, "tests: ", 
-            float(sum(avg_cos_dists)/ len(avg_cos_dists)))
-    print("The mean amount of synonyms", (sum(syn_experiments)/ iterationCount))
-    print("Average number of words that are not fit for translation: ",float(sum(bword_counts)/iterationCount)) 
-    results = pd.DataFrame({'scores': scores, 'similarity': avg_cos_dists}) 
-    ax2 = sns.violinplot(x=results["similarity"]) 
-    sns.plt.show() 
-    ax = sns.violinplot(x="scores", y="similarity", data=results) 
-    sns.plt.show()  
-    joint_graph = sns.jointplot(x="scores", y="similarity", data=results, kind="reg") 
-    sns.plt.show() 
-    hex_graph = sns.jointplot(x="scores", y="similarity", data=results, kind="hex")  
-    sns.plt.show()
-    
+        
+        scores, syn_experiments, average, avg_cos_dists, iterationCount, bword_counts= run_experiment(model, num_experiments)       
+        print("----------------Experiment Results------------------")
+        print("The mean average percentage over ", iterationCount , "tests: ",
+                (average/iterationCount), "%")
+        print("The mean cosine simalarity over ", iterationCount, "tests: ", 
+                float(sum(avg_cos_dists)/ len(avg_cos_dists)))
+        print("The mean amount of synonyms", (sum(syn_experiments)/ iterationCount))
+        print("Average number of words that are not fit for translation: ",float(sum(bword_counts)/iterationCount)) 
+        results = pd.DataFrame({'scores': scores, 'similarity': avg_cos_dists}) 
+        ax2 = sns.violinplot(x=results["similarity"]) 
+        sns.plt.show() 
+        ax = sns.violinplot(x="scores", y="similarity", data=results) 
+        sns.plt.show()  
+        joint_graph = sns.jointplot(x="scores", y="similarity", data=results, kind="reg") 
+        sns.plt.show() 
+        hex_graph = sns.jointplot(x="scores", y="similarity", data=results, kind="hex")  
+        sns.plt.show()
+        
 
 
 
