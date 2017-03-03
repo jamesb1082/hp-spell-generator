@@ -143,7 +143,6 @@ def getSpellType(scale, rndNum):
                 if rndNum < temp2[0]:
                     return temp2[1]
 
-    #add in extra code
     temp2 = scale[0]
     return temp2[1]
 
@@ -225,6 +224,7 @@ def sentenceToWord(sentence, model):
     output = []
     top_val = 10
     selected = []
+    bogus_words = 0
     for word in sentence:
         try:
             output.append(model[word])
@@ -234,8 +234,7 @@ def sentenceToWord(sentence, model):
     output = np.array(output)
     vector_sum = output.sum(axis=0)
     output = model.most_similar(positive=[vector_sum], topn=top_val)
-    final_output = output[randint(0, (top_val - 1))]
-    
+    final_output = output[randint(0, (top_val - 1))]    
     while is_valid(final_output[0]):
         num = randint(0, top_val - 1)
         final_output = output[num]
@@ -245,8 +244,9 @@ def sentenceToWord(sentence, model):
                 output = model.most_similar(positive=[vector_sum], topn=top_val)
         else:
             selected.append(num)
-#    print final_output[0]
-    return final_output
+
+        bogus_words+=1
+    return final_output, bogus_words 
 
 
 def pigLatin(source):
@@ -301,7 +301,7 @@ def generateSpell(sentence, model):
     """
 
     spell = []
-    vector = sentenceToWord(sentence, model)
+    vector,temp_bogus = sentenceToWord(sentence, model)
     vector = vector[0]
     scale = generateScale(count_instances('spell_prob.csv'))
     selection = random.random()
@@ -319,7 +319,9 @@ def generateSpell(sentence, model):
         spell.append(translate2(vector, target_lang))
     spell.append(spell_meta[0])
     spell.append(vector) #The original word before translation is also added onto the end for evaluation purposes.
-    return spell 
+    return spell, temp_bogus 
+
+
 
 def load_vectors(path, is_binary): 
     print("Loading: ", path) 
@@ -356,10 +358,14 @@ def run_experiment(model, num_experiments):
     scores = [] 
     cos_dists = [] 
     avg_cos_dists = [] 
-    syn_experiments = [] 
+    syn_experiments = []
+    bword_counts = [] 
+    
+    
     for i in range(0, num_experiments):
         print("---------------", i, "---------------")
         log("---------------"+str(i) +  "---------------")
+        bogus_words = 0  
         spellFile = open("spells.csv") 
         entry = [] 
         score = 0
@@ -369,31 +375,36 @@ def run_experiment(model, num_experiments):
             count+=1
             line = line.strip("\n")
             entry = line.split(",")
-             
-            spell = generateSpell(entry[1], model) 
-            if spell[2].lower() in entry[1].split():  
+                         
+            spell, temp_bogus = generateSpell(entry[1], model)
+            bogus_words+= temp_bogus
+            if args.verbose: 
+                print("Your new spell is: ", spell[0])  
+            if spell[2].lower() not in entry[1].split():  
                 score +=1
             #calculate the cosine similarity. 
-           
             og_wd = model[entry[-1].strip()] 
             nw_wd = model[spell[-1]]
             cos_dists.append(distance.cosine(og_wd, nw_wd))#added log to improve output graph.    
             if is_synonym(spell[2].lower(), entry[-1]): 
                 syn_counts +=1
-        print("Num of spells that feature in definition: ", score)       
+        print("Experiment Results") 
+        print("Num of spells that don't feature in definition: ", score)       
         print("Percentage: ", ((float(score)/count) * 100),"%") 
         print("Average Cosine-simalarity:", float(sum(cos_dists) / len(cos_dists)))  
-        print("Num of spells which are a synonyms: ", syn_counts)
+        print("Num of spells which are synonyms: ", syn_counts)
+        print("Num of words selected that are not real words: ", bogus_words) 
         scores.append(score) 
-        syn_experiments.append(syn_counts) 
+        syn_experiments.append(syn_counts)
+        bword_counts.append(bogus_words) 
         spellFile.close()
         iterationCount +=1 
         average += (float(score)/count)*100
         avg_cos_dists.append(float(sum(cos_dists) / len(cos_dists)))
-    return scores, syn_experiments,average, avg_cos_dists, iterationCount        
+    return scores, syn_experiments,average, avg_cos_dists, iterationCount, bword_counts        
 
 
-
+# ==================================================================================
 # Main part of the program. 
 # ==================================================================================
 if __name__ == '__main__':
@@ -404,6 +415,8 @@ if __name__ == '__main__':
     parser.add_argument('--exp',
     help="Specifies the number of experiments on this run. Default is 20.",
             action='store', type=int)
+    parser.add_argument('--verbose', action='store_const', const = 'verbose',
+            help='Prints out the spell names') 
     args = parser.parse_args()
    
     logFile = open("log.txt", 'w' ) #the log file is blank at start of each execution 
@@ -423,13 +436,14 @@ if __name__ == '__main__':
         model = load_vectors("../../vectors/GoogleNews-vectors-negative300.bin", True) 
     
     
-    scores, syn_experiments, average, avg_cos_dists, iterationCount = run_experiment(model, num_experiments)       
+    scores, syn_experiments, average, avg_cos_dists, iterationCount, bword_counts= run_experiment(model, num_experiments)       
     print("----------------Experiment Results------------------")
     print("The mean average percentage over ", iterationCount , "tests: ",
             (average/iterationCount), "%")
     print("The mean cosine simalarity over ", iterationCount, "tests: ", 
             float(sum(avg_cos_dists)/ len(avg_cos_dists)))
     print("The mean amount of synonyms", (sum(syn_experiments)/ iterationCount))
+    print("Average number of words that are not fit for translation: ",float(sum(bword_counts)/iterationCount)) 
     results = pd.DataFrame({'scores': scores, 'similarity': avg_cos_dists}) 
     ax2 = sns.violinplot(x=results["similarity"]) 
     sns.plt.show() 
@@ -437,5 +451,24 @@ if __name__ == '__main__':
     sns.plt.show()  
     joint_graph = sns.jointplot(x="scores", y="similarity", data=results, kind="reg") 
     sns.plt.show() 
-    hex_graph = sns.jointplot(x="scores", y="similarity", data=results, kind="hex") 
-    sns.plt.show() 
+    hex_graph = sns.jointplot(x="scores", y="similarity", data=results, kind="hex")  
+    sns.plt.show()
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
