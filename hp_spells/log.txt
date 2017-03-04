@@ -8,8 +8,6 @@ key error in vector fileand
 key error in vector filea
 key error in vector filea
 key error in vector fileand
----------------2---------------
-key error in vector filea
-key error in vector filea
-key error in vector fileand
 ---------------Vectors used: GloVe---------------
+---------------0---------------
+---------------1---------------

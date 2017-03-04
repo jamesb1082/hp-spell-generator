@@ -426,24 +426,50 @@ if __name__ == '__main__':
     num_experiments = 20 
     if args.exp != None: 
         num_experiments = args.exp 
-    if args.comp:
+    
+    
+    if args.comp: # comparison mode. 
         print("Compare Mode") 
         log("----------------------Compare Mode-----------------------")
         print("Vectors used: Word2Vec")
         log("---------------"+ "Vectors used: Word2Vec"+ "---------------")
         model = load_vectors("../../vectors/GoogleNews-vectors-negative300.bin", True)  
+                
+        #Run word2vec experiments and then stores data in dataframe. 
         w_scores, w_syn_experiments, w_average, w_avg_cos_dists, iterationCount, w_bword_counts= run_experiment(model, num_experiments)    
-        w_results = pd.DataFrame({'scores': w_scores, 'synonyms' :w_syn_experiments, "similarity": w_avg_cos_dists, "b_words":w_bword_counts})
-        print(w_results)
-        del model 
+        w_vec=["word2vec" for x in w_scores]         
+        del model  
         print("Vectors used: GloVe")
         log("---------------" +  "Vectors used: GloVe"+ "---------------")
-        model = load_vectors("../../vectors/glove.txt.vw", False) 
+        model = load_vectors("../../vectors/glove.txt.vw", False)
+
+        # run experiments and move results into data frame. 
         g_scores, g_syn_experiments, g_average, g_avg_cos_dists, iterationCount, g_bword_counts= run_experiment(model, num_experiments)  
-        #==================TO DO ============
-        #Take glove data and put in a data frame like word 2vec. 
-        #Then print out some cool graphs and print out experiment results 
-    else: 
+        g_vec = ["glove" for x in g_scores]
+
+        scores=w_scores + g_scores
+        syn_experiments = w_syn_experiments + g_syn_experiments
+        avg_cos_dists = w_avg_cos_dists + g_avg_cos_dists
+        bword_counts = w_bword_counts + g_bword_counts
+        vectors = w_vec + g_vec 
+        
+        results = pd.DataFrame({"scores":scores, "similarity":avg_cos_dists, "synonyms":syn_experiments, "vectors":vectors, "bwords":bword_counts})
+    
+        print(results) 
+        sim = sns.violinplot(x="vectors", y="similarity", data=results)
+        sns.plt.title("Comparison of Similarity over "+str( iterationCount)+ " experiments")
+        sns.plt.show() 
+        sc = sns.violinplot(x="vectors", y="scores", data=results) 
+        sns.plt.title("Comparison of accuracy scores over "+str(iterationCount)+ " experiments") 
+        sns.plt.show()
+        bw = sns.violinplot(x="vectors", y="bwords", data=results) 
+        sns.plt.title("Comparison of invalid words over "+ str(iterationCount)+ " experiments")  
+        sns.plt.show()
+        sns.plt.title("Comparison of synonyms over " +str( iterationCount) +" experiments")  
+        syn = sns.violinplot(x="vectors", y="synonyms", data=results)
+        sns.plt.show()
+
+    else: # test an individual mode.  
         if args.glove:
             print("Vectors used: GloVe")
             log("---------------" +  "Vectors used: GloVe"+ "---------------")
