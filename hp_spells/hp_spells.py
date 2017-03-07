@@ -452,10 +452,27 @@ if __name__ == '__main__':
         avg_cos_dists = w_avg_cos_dists + g_avg_cos_dists
         bword_counts = w_bword_counts + g_bword_counts
         vectors = w_vec + g_vec 
+        print("----------------word2vec Experiment Results------------------")
+        print("The mean average percentage over ", iterationCount , "tests: ",
+                (w_average/iterationCount), "%")
+        print("The mean cosine simalarity over ", iterationCount, "tests: ", 
+                float(sum(w_avg_cos_dists)/ len(w_avg_cos_dists)))
+        print("The mean amount of synonyms", (sum(w_syn_experiments)/ iterationCount))
+        print("Average number of words that are not fit for translation: ",float(sum(w_bword_counts)/iterationCount)) 
         
+        
+        print("----------------GloVe Experiment Results------------------")
+        print("The mean average percentage over ", iterationCount , "tests: ",
+                (g_average/iterationCount), "%")
+        print("The mean cosine simalarity over ", iterationCount, "tests: ", 
+                float(sum(g_avg_cos_dists)/ len(g_avg_cos_dists)))
+        print("The mean amount of synonyms", (sum(g_syn_experiments)/ iterationCount))
+        print("Average number of words that are not fit for translation: ",float(sum(g_bword_counts)/iterationCount)) 
+        
+
         results = pd.DataFrame({"scores":scores, "similarity":avg_cos_dists, "synonyms":syn_experiments, "vectors":vectors, "bwords":bword_counts})
     
-        print(results) 
+
         sim = sns.violinplot(x="vectors", y="similarity", data=results)
         sns.plt.title("Comparison of Similarity over "+str( iterationCount)+ " experiments")
         sns.plt.show() 

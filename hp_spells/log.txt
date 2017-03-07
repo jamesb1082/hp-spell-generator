@@ -2,17 +2,15 @@
 ---------------Vectors used: Word2Vec---------------
 ---------------0---------------
 key error in vector filea
-Error Cannot translate: enraptured
 key error in vector filea
 key error in vector fileand
 ---------------1---------------
-Error Cannot translate: regrows
 key error in vector filea
 key error in vector filea
+Error Cannot translate: the
 key error in vector fileand
 ---------------2---------------
 key error in vector filea
-Error Cannot translate: maybe
 key error in vector filea
 key error in vector fileand
 ---------------3---------------
@@ -21,35 +19,28 @@ key error in vector filea
 key error in vector fileand
 ---------------4---------------
 key error in vector filea
-Error Cannot translate: dénouement
-Error Cannot translate: slide
 key error in vector filea
-Error Cannot translate: surprised
 key error in vector fileand
 ---------------5---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------6---------------
-Error Cannot translate: destory
 key error in vector filea
-Error Cannot translate: slide
 key error in vector filea
 key error in vector fileand
 ---------------7---------------
 key error in vector filea
-Error Cannot translate: movable
 key error in vector filea
 key error in vector fileand
 ---------------8---------------
 key error in vector filea
 key error in vector filea
-Error Cannot translate: quieter
 key error in vector fileand
 ---------------9---------------
 key error in vector filea
 key error in vector filea
-Error Cannot translate: protects
 key error in vector fileand
 ---------------10---------------
 key error in vector filea
@@ -57,13 +48,9 @@ key error in vector filea
 key error in vector fileand
 ---------------11---------------
 key error in vector filea
-Error Cannot translate: doubling
 key error in vector filea
-Error Cannot translate: protects
-Error Cannot translate: surprised
 key error in vector fileand
 ---------------12---------------
-Error Cannot translate: destory
 key error in vector filea
 key error in vector filea
 key error in vector fileand
@@ -73,10 +60,12 @@ key error in vector filea
 key error in vector fileand
 ---------------14---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------15---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------16---------------
@@ -105,6 +94,7 @@ key error in vector filea
 key error in vector fileand
 ---------------22---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------23---------------
@@ -129,11 +119,11 @@ key error in vector filea
 key error in vector fileand
 ---------------28---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------29---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------30---------------
@@ -162,7 +152,6 @@ key error in vector filea
 key error in vector fileand
 ---------------36---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------37---------------
@@ -187,11 +176,11 @@ key error in vector filea
 key error in vector fileand
 ---------------42---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------43---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------44---------------
@@ -209,16 +198,15 @@ key error in vector filea
 key error in vector fileand
 ---------------47---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------48---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------49---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------50---------------
@@ -227,6 +215,7 @@ key error in vector filea
 key error in vector fileand
 ---------------51---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------52---------------
@@ -263,7 +252,6 @@ key error in vector filea
 key error in vector fileand
 ---------------60---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------61---------------
@@ -312,6 +300,7 @@ key error in vector filea
 key error in vector fileand
 ---------------72---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------73---------------
@@ -353,7 +342,6 @@ key error in vector filea
 key error in vector fileand
 ---------------82---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------83---------------
@@ -362,15 +350,16 @@ key error in vector filea
 key error in vector fileand
 ---------------84---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------85---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------86---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------87---------------
@@ -379,7 +368,6 @@ key error in vector filea
 key error in vector fileand
 ---------------88---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------89---------------
@@ -457,7 +445,6 @@ key error in vector filea
 key error in vector fileand
 ---------------107---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------108---------------
@@ -466,7 +453,6 @@ key error in vector filea
 key error in vector fileand
 ---------------109---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------110---------------
@@ -475,7 +461,6 @@ key error in vector filea
 key error in vector fileand
 ---------------111---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------112---------------
@@ -536,7 +521,6 @@ key error in vector filea
 key error in vector fileand
 ---------------126---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------127---------------
@@ -586,9 +570,11 @@ key error in vector fileand
 ---------------138---------------
 key error in vector filea
 key error in vector filea
+Error Cannot translate: whole
 key error in vector fileand
 ---------------139---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------140---------------
@@ -618,6 +604,7 @@ key error in vector filea
 key error in vector fileand
 ---------------146---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------147---------------
@@ -627,6 +614,7 @@ key error in vector filea
 key error in vector fileand
 ---------------148---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------149---------------
@@ -635,6 +623,7 @@ key error in vector filea
 key error in vector fileand
 ---------------150---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------151---------------
@@ -675,6 +664,7 @@ key error in vector filea
 key error in vector fileand
 ---------------160---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------161---------------
@@ -751,7 +741,6 @@ key error in vector filea
 key error in vector fileand
 ---------------179---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------180---------------
@@ -764,6 +753,7 @@ key error in vector filea
 key error in vector fileand
 ---------------182---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------183---------------
@@ -812,11 +802,11 @@ key error in vector filea
 key error in vector fileand
 ---------------194---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------195---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------196---------------
@@ -866,7 +856,6 @@ key error in vector fileand
 ---------------207---------------
 key error in vector filea
 key error in vector filea
-Error Cannot translate: open
 key error in vector fileand
 ---------------208---------------
 key error in vector filea
@@ -878,7 +867,6 @@ key error in vector filea
 key error in vector fileand
 ---------------210---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------211---------------
@@ -899,7 +887,6 @@ key error in vector filea
 key error in vector fileand
 ---------------215---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------216---------------
@@ -908,20 +895,20 @@ key error in vector filea
 key error in vector fileand
 ---------------217---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------218---------------
 key error in vector filea
-Error Cannot translate: tree
 key error in vector filea
 key error in vector fileand
 ---------------219---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------220---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------221---------------
@@ -930,7 +917,6 @@ key error in vector filea
 key error in vector fileand
 ---------------222---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------223---------------
@@ -939,6 +925,7 @@ key error in vector filea
 key error in vector fileand
 ---------------224---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------225---------------
@@ -1007,7 +994,6 @@ key error in vector filea
 key error in vector fileand
 ---------------241---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------242---------------
@@ -1028,6 +1014,7 @@ key error in vector filea
 key error in vector fileand
 ---------------246---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------247---------------
@@ -1052,6 +1039,7 @@ key error in vector filea
 key error in vector fileand
 ---------------252---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------253---------------
@@ -1068,6 +1056,7 @@ key error in vector filea
 key error in vector fileand
 ---------------256---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------257---------------
@@ -1096,6 +1085,7 @@ key error in vector filea
 key error in vector fileand
 ---------------263---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------264---------------
@@ -1108,11 +1098,11 @@ key error in vector filea
 key error in vector fileand
 ---------------266---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------267---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------268---------------
@@ -1133,7 +1123,6 @@ key error in vector filea
 key error in vector fileand
 ---------------272---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------273---------------
@@ -1142,7 +1131,6 @@ key error in vector filea
 key error in vector fileand
 ---------------274---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------275---------------
@@ -1163,6 +1151,7 @@ key error in vector filea
 key error in vector fileand
 ---------------279---------------
 key error in vector filea
+Error Cannot translate: previous
 key error in vector filea
 key error in vector fileand
 ---------------280---------------
@@ -1179,6 +1168,7 @@ key error in vector filea
 key error in vector fileand
 ---------------283---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------284---------------
@@ -1187,7 +1177,6 @@ key error in vector filea
 key error in vector fileand
 ---------------285---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------286---------------
@@ -1204,7 +1193,6 @@ key error in vector filea
 key error in vector fileand
 ---------------289---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------290---------------
@@ -1233,7 +1221,6 @@ key error in vector filea
 key error in vector fileand
 ---------------296---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------297---------------
@@ -1254,95 +1241,10 @@ key error in vector filea
 key error in vector fileand
 ---------------301---------------
 key error in vector filea
-Error Cannot translate: triples
-Error Cannot translate: slides
-Error Cannot translate: introduce
-Error Cannot translate: guy
-Error Cannot translate: impotent
-Error Cannot translate: hinder
-Error Cannot translate: rules
-Error Cannot translate: does
-Error Cannot translate: prision
-Error Cannot translate: buring
-Error Cannot translate: locks
-Error Cannot translate: Body
-Error Cannot translate: Body
-Error Cannot translate: place
-Error Cannot translate: illumination
-Error Cannot translate: in
-Error Cannot translate: moveable
-Error Cannot translate: body
-Error Cannot translate: bite
-Error Cannot translate: Friday
-Error Cannot translate: forgets
-Error Cannot translate: darker
-Error Cannot translate: i
-Error Cannot translate: gesneriads
-Error Cannot translate: Pack
-Error Cannot translate: no
-Error Cannot translate: this
-Error Cannot translate: us
-Error Cannot translate: before
-Error Cannot translate: first
-Error Cannot translate: protec
-Error Cannot translate: just
 key error in vector filea
-Error Cannot translate: i
-Error Cannot translate: hushed
-Error Cannot translate: add
-Error Cannot translate: setting
-Error Cannot translate: energizing
-Error Cannot translate: repulse
-Error Cannot translate: it
-Error Cannot translate: laughed
-Error Cannot translate: protects
-Error Cannot translate: trimming
-Error Cannot translate: serpent
-Error Cannot translate: hush
-Error Cannot translate: deafening
-Error Cannot translate: the
 key error in vector fileand
-Error Cannot translate: quick
-Error Cannot translate: off
-Error Cannot translate: just
 ---------------302---------------
-Error Cannot translate: summon
-Error Cannot translate: minds
-Error Cannot translate: burglars
-Error Cannot translate: i
-Error Cannot translate: appear
-Error Cannot translate: not
-Error Cannot translate: small
-Error Cannot translate: wingbeats
-Error Cannot translate: enemy
-Error Cannot translate: binds
-Error Cannot translate: lol
-Error Cannot translate: befuddle
-Error Cannot translate: irritate
-Error Cannot translate: i
-Error Cannot translate: dug
-Error Cannot translate: decimate
-Error Cannot translate: grows
-Error Cannot translate: digging
-Error Cannot translate: split
-Error Cannot translate: im
-Error Cannot translate: replenish
-Error Cannot translate: strengthen
-Error Cannot translate: repair
-Error Cannot translate: erecting
 key error in vector filea
-Error Cannot translate: await
-Error Cannot translate: remove
-Error Cannot translate: expel
-Error Cannot translate: tarragon
-Error Cannot translate: reputable
-Error Cannot translate: endlessness
-Error Cannot translate: flipped
-Error Cannot translate: boiling
-Error Cannot translate: skid
-Error Cannot translate: Unveiling
-Error Cannot translate: fella
-Error Cannot translate: bedridden
 key error in vector filea
 key error in vector fileand
 ---------------303---------------
@@ -1375,6 +1277,7 @@ key error in vector filea
 key error in vector fileand
 ---------------310---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------311---------------
@@ -1419,10 +1322,12 @@ key error in vector filea
 key error in vector fileand
 ---------------321---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------322---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------323---------------
@@ -1431,12 +1336,10 @@ key error in vector filea
 key error in vector fileand
 ---------------324---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------325---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------326---------------
@@ -1478,6 +1381,7 @@ key error in vector filea
 key error in vector fileand
 ---------------335---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------336---------------
@@ -1494,6 +1398,7 @@ key error in vector filea
 key error in vector fileand
 ---------------339---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------340---------------
@@ -1514,6 +1419,7 @@ key error in vector filea
 key error in vector fileand
 ---------------344---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------345---------------
@@ -1530,7 +1436,6 @@ key error in vector filea
 key error in vector fileand
 ---------------348---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------349---------------
@@ -1579,11 +1484,11 @@ key error in vector filea
 key error in vector fileand
 ---------------360---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------361---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------362---------------
@@ -1616,7 +1521,6 @@ key error in vector filea
 key error in vector fileand
 ---------------369---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------370---------------
@@ -1637,7 +1541,6 @@ key error in vector filea
 key error in vector fileand
 ---------------374---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------375---------------
@@ -1654,17 +1557,14 @@ key error in vector filea
 key error in vector fileand
 ---------------378---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------379---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------380---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------381---------------
@@ -1685,10 +1585,12 @@ key error in vector filea
 key error in vector fileand
 ---------------385---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------386---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------387---------------
@@ -1697,7 +1599,6 @@ key error in vector filea
 key error in vector fileand
 ---------------388---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------389---------------
@@ -1726,6 +1627,7 @@ key error in vector filea
 key error in vector fileand
 ---------------395---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------396---------------
@@ -1758,6 +1660,7 @@ key error in vector filea
 key error in vector fileand
 ---------------403---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------404---------------
@@ -1770,7 +1673,6 @@ key error in vector filea
 key error in vector fileand
 ---------------406---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------407---------------
@@ -1795,17 +1697,14 @@ key error in vector filea
 key error in vector fileand
 ---------------412---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------413---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------414---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------415---------------
@@ -1814,11 +1713,11 @@ key error in vector filea
 key error in vector fileand
 ---------------416---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------417---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------418---------------
@@ -1831,7 +1730,6 @@ key error in vector filea
 key error in vector fileand
 ---------------420---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------421---------------
@@ -1880,6 +1778,7 @@ key error in vector filea
 key error in vector fileand
 ---------------432---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------433---------------
@@ -1936,7 +1835,6 @@ key error in vector filea
 key error in vector fileand
 ---------------446---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------447---------------
@@ -1949,6 +1847,7 @@ key error in vector filea
 key error in vector fileand
 ---------------449---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------450---------------
@@ -1969,6 +1868,7 @@ key error in vector filea
 key error in vector fileand
 ---------------454---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------455---------------
@@ -2009,17 +1909,14 @@ key error in vector filea
 key error in vector fileand
 ---------------464---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------465---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------466---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------467---------------
@@ -2028,6 +1925,7 @@ key error in vector filea
 key error in vector fileand
 ---------------468---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------469---------------
@@ -2060,6 +1958,7 @@ key error in vector filea
 key error in vector fileand
 ---------------476---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------477---------------
@@ -2072,6 +1971,7 @@ key error in vector filea
 key error in vector fileand
 ---------------479---------------
 key error in vector filea
+Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------480---------------
@@ -2080,7 +1980,6 @@ key error in vector filea
 key error in vector fileand
 ---------------481---------------
 key error in vector filea
-Error Cannot translate: dénouement
 key error in vector filea
 key error in vector fileand
 ---------------482---------------
@@ -2187,6 +2086,7 @@ key error in vector fileand
 ---------------28---------------
 ---------------29---------------
 ---------------30---------------
+Error Cannot translate: arm
 ---------------31---------------
 ---------------32---------------
 ---------------33---------------
@@ -2202,7 +2102,6 @@ key error in vector fileand
 ---------------43---------------
 ---------------44---------------
 ---------------45---------------
-Error Cannot translate: calm
 ---------------46---------------
 ---------------47---------------
 ---------------48---------------
@@ -2245,12 +2144,77 @@ Error Cannot translate: calm
 ---------------85---------------
 ---------------86---------------
 ---------------87---------------
+Error Cannot translate: lights
+Error Cannot translate: it
+Error Cannot translate: wood
+Error Cannot translate: moveable
+Error Cannot translate: death
+Error Cannot translate: Saturday
+Error Cannot translate: know
+Error Cannot translate: darkness
+Error Cannot translate: i
+Error Cannot translate: flowering
+Error Cannot translate: pouch
+Error Cannot translate: much
+Error Cannot translate: what
+Error Cannot translate: from
+Error Cannot translate: amazed
+Error Cannot translate: protect
+Error Cannot translate: the
+Error Cannot translate: that
+Error Cannot translate: reduced
+Error Cannot translate: down
+Error Cannot translate: enliven
+Error Cannot translate: renewing
+Error Cannot translate: wizarding
+Error Cannot translate: open
+Error Cannot translate: laughed
+Error Cannot translate: curse
+Error Cannot translate: way
+Error Cannot translate: not
+Error Cannot translate: hushed
+Error Cannot translate: screaming
+Error Cannot translate: particulars
+Error Cannot translate: already
+Error Cannot translate: fun
+Error Cannot translate: pull
+Error Cannot translate: it
+Error Cannot translate: back
 ---------------88---------------
+Error Cannot translate: demon
+Error Cannot translate: mind
+Error Cannot translate: locals
+Error Cannot translate: didnt
+Error Cannot translate: not
+Error Cannot translate: there
+Error Cannot translate: then
+Error Cannot translate: enemies
+Error Cannot translate: binds
+Error Cannot translate: cant
+Error Cannot translate: mislead
+Error Cannot translate: that
+Error Cannot translate: wouldnt
+Error Cannot translate: them
+Error Cannot translate: dental
+Error Cannot translate: depths
+Error Cannot translate: separate
+Error Cannot translate: this
+Error Cannot translate: dont
+Error Cannot translate: amounts
+Error Cannot translate: undermine
+Error Cannot translate: repair
+Error Cannot translate: erecting
+Error Cannot translate: wait
+Error Cannot translate: deport
+Error Cannot translate: thyme
+Error Cannot translate: dependable
+Error Cannot translate: ending
 ---------------89---------------
 ---------------90---------------
 ---------------91---------------
 ---------------92---------------
 ---------------93---------------
+Error Cannot translate: extra
 ---------------94---------------
 ---------------95---------------
 ---------------96---------------
@@ -2358,13 +2322,11 @@ Error Cannot translate: calm
 ---------------198---------------
 ---------------199---------------
 ---------------200---------------
-Error Cannot translate: it
 ---------------201---------------
 ---------------202---------------
 ---------------203---------------
 ---------------204---------------
 ---------------205---------------
-Error Cannot translate: burning
 ---------------206---------------
 ---------------207---------------
 ---------------208---------------
@@ -2420,7 +2382,6 @@ Error Cannot translate: burning
 ---------------258---------------
 ---------------259---------------
 ---------------260---------------
-Error Cannot translate: there
 ---------------261---------------
 ---------------262---------------
 ---------------263---------------
@@ -2590,9 +2551,9 @@ Error Cannot translate: there
 ---------------427---------------
 ---------------428---------------
 ---------------429---------------
+Error Cannot translate: put
 ---------------430---------------
 ---------------431---------------
-Error Cannot translate: seemed
 ---------------432---------------
 ---------------433---------------
 ---------------434---------------
