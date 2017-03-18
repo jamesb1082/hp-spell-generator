@@ -510,12 +510,7 @@ if __name__ == '__main__':
         sns.plt.show() 
         ax = sns.violinplot(x="scores", y="similarity", data=results) 
         sns.plt.show()  
-        joint_graph = sns.jointplot(x="scores", y="similarity", data=results, kind="reg") 
-        sns.plt.show() 
-        hex_graph = sns.jointplot(x="scores", y="similarity", data=results, kind="hex")  
-        sns.plt.show()
         
-
 
 
 
