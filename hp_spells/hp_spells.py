@@ -12,7 +12,7 @@ from scipy.spatial import distance
 import seaborn as sns 
 import pandas as pd 
 from nltk.corpus import wordnet 
-
+from tabulate import tabulate
 def checkStoredWords(kwords, word):
     """
 	
@@ -210,7 +210,7 @@ def log(text):
     logfile.write(text.encode("utf-8") + "\n")
     logfile.close() 
 
-def sentenceToWord(sentence, model):
+def sentenceToWord(sentence, model, oword):
     """
 
     Takes a string and converts it into a vector. Then from that it picks a similar word that doesn't contain an underscore. 
@@ -235,7 +235,7 @@ def sentenceToWord(sentence, model):
     vector_sum = output.sum(axis=0)
     output = model.most_similar(positive=[vector_sum], topn=top_val)
     final_output = output[randint(0, (top_val - 1))]    
-    while is_valid(final_output[0]):
+    while is_valid(final_output[0])and is_synonym(final_output[0], oword) == False:
         num = randint(0, top_val - 1)
         final_output = output[num]
         if num in selected:
@@ -246,6 +246,7 @@ def sentenceToWord(sentence, model):
             selected.append(num)
 
         bogus_words+=1
+    print(final_output[0])
     return final_output, bogus_words 
 
 
@@ -289,7 +290,7 @@ def f(str):
     return str[0] + str[1]
 
 
-def generateSpell(sentence, model):
+def generateSpell(sentence, model, oword):
     """
     Generates a Spell from a sentence. 
 
@@ -301,7 +302,7 @@ def generateSpell(sentence, model):
     """
 
     spell = []
-    vector,temp_bogus = sentenceToWord(sentence, model)
+    vector,temp_bogus = sentenceToWord(sentence, model, oword)
     vector = vector[0]
     scale = generateScale(count_instances('spell_prob.csv'))
     selection = random.random()
@@ -346,6 +347,7 @@ def is_synonym(n_word, o_word):
     synsets = wordnet.synsets(o_word)
     for synset in synsets:
         synonyms = synonyms+ synset.lemma_names()
+    
     return n_word in synonyms 
 
 def joint_plot(scores, cosines): 
@@ -361,6 +363,8 @@ def run_experiment(model, num_experiments):
     syn_experiments = []
     bword_counts = [] 
     
+    table1 = []  
+    table2 = []
     
     for i in range(0, num_experiments):
         print("---------------", i, "---------------")
@@ -375,20 +379,25 @@ def run_experiment(model, num_experiments):
             count+=1
             line = line.strip("\n")
             entry = line.split(",")
-                         
-            spell, temp_bogus = generateSpell(entry[1], model)
+            spell, temp_bogus = generateSpell(entry[1], model,entry[3] )
             bogus_words+= temp_bogus
             if args.verbose: 
                 print("Your new spell is: ", spell[0])  
             if spell[2].lower() not in entry[1].split():  
                 score +=1
+            table1.append([spell[0]])  
+            table2.append([spell[2]]) 
             #calculate the cosine similarity. 
             og_wd = model[entry[-1].strip()] 
             nw_wd = model[spell[-1]]
             cos_dists.append(distance.cosine(og_wd, nw_wd))#added log to improve output graph.    
             if is_synonym(spell[2].lower(), entry[-1]): 
                 syn_counts +=1
-        print("Experiment Results") 
+        
+        print(tabulate(table1,headers=["Translated"])) 
+        print(tabulate(table2,headers=[ "English"])) 
+        print("Experiment Results")
+
         print("Num of spells that don't feature in definition: ", score)       
         print("Percentage: ", ((float(score)/count) * 100),"%") 
         print("Average Cosine-simalarity:", float(sum(cos_dists) / len(cos_dists)))  
