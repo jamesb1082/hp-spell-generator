@@ -370,7 +370,7 @@ def run_experiment(model, num_experiments):
         print("---------------", i, "---------------")
         log("---------------"+str(i) +  "---------------")
         bogus_words = 0  
-        spellFile = open("spells.csv") 
+        spellFile = open("dndspells.csv") 
         entry = [] 
         score = 0
         count = 0
