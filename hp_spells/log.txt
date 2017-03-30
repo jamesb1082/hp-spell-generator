@@ -1,6 +1,96 @@
----------------Vectors used: Word2Vec---------------
+---------------Vectors used: GloVe---------------
 ---------------0---------------
-Error Cannot translate: regrows
-key error in vector filea
-key error in vector filea
-key error in vector fileand
+key error in vector fileSubject's
+key error in vector fileweapon's
+key error in vector file(climb
+key error in vector fileangle)
+key error in vector filesubstance;
+key error in vector fileunicorn's
+key error in vector filepuddle-like
+key error in vector filetouch-stone
+---------------1---------------
+key error in vector fileSubject's
+key error in vector fileweapon's
+Error Cannot translate: sizes
+key error in vector file(climb
+key error in vector fileangle)
+key error in vector filesubstance;
+key error in vector fileunicorn's
+key error in vector filepuddle-like
+key error in vector filetouch-stone
+---------------2---------------
+key error in vector fileSubject's
+Error Cannot translate: underneath
+key error in vector fileweapon's
+Error Cannot translate: exceeding
+Error Cannot translate: melee
+Error Cannot translate: nor
+key error in vector file(climb
+key error in vector fileangle)
+key error in vector filesubstance;
+key error in vector fileunicorn's
+key error in vector filepuddle-like
+key error in vector filetouch-stone
+---------------3---------------
+key error in vector fileSubject's
+key error in vector fileweapon's
+key error in vector file(climb
+key error in vector fileangle)
+key error in vector filesubstance;
+key error in vector fileunicorn's
+key error in vector filepuddle-like
+key error in vector filetouch-stone
+---------------4---------------
+key error in vector fileSubject's
+key error in vector fileweapon's
+key error in vector file(climb
+key error in vector fileangle)
+key error in vector filesubstance;
+key error in vector fileunicorn's
+key error in vector filepuddle-like
+key error in vector filetouch-stone
+---------------5---------------
+key error in vector fileSubject's
+key error in vector fileweapon's
+key error in vector file(climb
+key error in vector fileangle)
+key error in vector filesubstance;
+key error in vector fileunicorn's
+key error in vector filepuddle-like
+key error in vector filetouch-stone
+---------------6---------------
+key error in vector fileSubject's
+key error in vector fileweapon's
+key error in vector file(climb
+key error in vector fileangle)
+key error in vector filesubstance;
+key error in vector fileunicorn's
+key error in vector filepuddle-like
+key error in vector filetouch-stone
+---------------7---------------
+key error in vector fileSubject's
+key error in vector fileweapon's
+key error in vector file(climb
+key error in vector fileangle)
+key error in vector filesubstance;
+key error in vector fileunicorn's
+key error in vector filepuddle-like
+key error in vector filetouch-stone
+---------------8---------------
+key error in vector fileSubject's
+key error in vector fileweapon's
+key error in vector file(climb
+key error in vector fileangle)
+key error in vector filesubstance;
+key error in vector fileunicorn's
+key error in vector filepuddle-like
+key error in vector filetouch-stone
+---------------9---------------
+key error in vector fileSubject's
+key error in vector fileweapon's
+key error in vector file(climb
+key error in vector fileangle)
+key error in vector filesubstance;
+key error in vector fileunicorn's
+key error in vector filepuddle-like
+key error in vector filetouch-stone

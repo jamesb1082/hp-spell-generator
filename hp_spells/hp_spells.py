@@ -222,7 +222,7 @@ def sentenceToWord(sentence, model, oword):
 
     sentence = sentence.split()
     output = []
-    top_val = 10
+    top_val = 20
     selected = []
     bogus_words = 0
     for word in sentence:
@@ -246,7 +246,7 @@ def sentenceToWord(sentence, model, oword):
             selected.append(num)
 
         bogus_words+=1
-    print(final_output[0])
+   # print(final_output[0])
     return final_output, bogus_words 
 
 
@@ -367,6 +367,8 @@ def run_experiment(model, num_experiments):
     table2 = []
     
     for i in range(0, num_experiments):
+        table1 = []  
+        table2 = []
         print("---------------", i, "---------------")
         log("---------------"+str(i) +  "---------------")
         bogus_words = 0  
@@ -394,7 +396,7 @@ def run_experiment(model, num_experiments):
             if is_synonym(spell[2].lower(), entry[-1]): 
                 syn_counts +=1
         
-        print(tabulate(table1,headers=["Translated"])) 
+        #print(tabulate(table1,headers=["Translated"])) 
         print(tabulate(table2,headers=[ "English"])) 
         print("Experiment Results")
 

@@ -1,0 +1,46 @@
+name,def,1w desc,w2 ,w3,g1,g2
+Aberrate,Subject becomes an aberration,abberation,is,constitutes,aberration,considered
+Ability Rip,Rips a supernatural ability from one creature and transfer it to another,steal,only,just,it,to
+Aboleth Curse,Subject's skin undergoes a horrible transformation,mutate,transmogrification,transmogrification,transformation,another
+Absorb Mind,You gain twenty five percent chance of knowing information in a brain eaten,absorb,just,five,that,that
+Absorb Weapon,Hides a weapon inside your arm,conceal,weapon,inside,the,arms
+Abyssal Army,Summons demons to fight for you,demons,demons,fight,make,able
+Accuracy,Doubles ranged weapon's range increments,extends,increments,Ranging,varying,vary
+Acid Fog,Fog deals acid damage,acid,Damage,Damage,effects,affect
+Acid Sheath,Sheath of acid damages those who attack you improves acid spell damage,sheath,acid,acid,because,cause
+Adamantine Weapon,Transform weapon into adamantine,adamantine,alchemized,atomize,into,enemies
+Addiction,Subject becomes addicted to a drug,addicted,addicted,addicted,way,drug
+Affliction,Infects evil subject with chosen affliction,afflict,subject,subject,those,same
+Air Breathing,Subjects can breathe air freely,breath,can,breathe,you,you
+Air Walk,Subject treads on air as if solid,walk,but,on,it,it
+Airy Water,Turn normal water into a breathable substance,latin,IWEBE,UDBKL,rather,that
+Algid Enhancement,Grant bonuses to creatures of the cold subtype,bonus,cold,cold,of,to
+Alicorn Lance,Gain a unicorn's horn that can be a ranged touch attack to strike a foe once as a free action for force damage,horn,that,that,when,another
+Align Weapon,Weapon becomes good evil lawful or chaotic,weapon,evil,lawful,even,because
+Aligned Aura,Grant combat bonuses to like aligned allies and impose penalties on creatures of opposing alignment,bonus,opposing,opposing,them,both
+Alter Self,Assume form of a similar creature,morph,sort,Assume,certain,similar
+Alustriel's Banner,Create a minor image of a banner that is illuminated to guide and light,banner,illuminated,light,a,one
+Ambient Song,Masks bardic music effects as other sounds,song,Melodically,Melodically,other,music
+Amorphous Form,Subject becomes puddle-like and can slip through cracks quickly,puddle,easily,becomes,way,can
+Analyze Dweomer,Reveals magical aspects of subject,reveal,aspects,Reveals,nature,aspect
+Analyze Touchstone,Find a nearby planar touch-stone and discover its properties,properties,properties,discover,and,one
+,,,,,,
+,,,,,5,8
+,,,,,,
+,,,,,,
+,,,,,,
+,word2vec,,,,,
+,----------------Experiment Results------------------,,,,,
+,The mean average percentage over  10 tests:  38.8 %,,,,,
+,The mean cosine simalarity over  10 tests:  0.787375186606,,,,,
+,The mean amount of synonyms 0.4,,,,,
+,Average number of words that are not fit for translation:  218.9,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,----------------Experiment Results------------------,,,,,
+,The mean average percentage over  10 tests:  71.6 %,,,,,
+,The mean cosine simalarity over  10 tests:  0.71627826145,,,,,
+,The mean amount of synonyms 0.3,,,,,
+,Average number of words that are not fit for translation:  0.0,,,,,
