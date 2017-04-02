@@ -537,8 +537,9 @@ if __name__ == '__main__':
         ax = sns.tsplot(time="length", value="bwords", unit="vectors",condition="vectors",data=len_results  )
         sns.plt.show()
         #factor plot 
-        graph = sns.factorplot(x="length", data=len_results, kind="bwords", size=6, aspect=1.5, order="length") 
-        sns.plt.show() 
+      #  graph = sns.factorplot(x="length", data=len_results, kind="bwords", size=6, aspect=1.5, order="length") 
+       
+       #sns.plt.show() 
         #box plot 
         ax = sns.boxplot(x="length", y = "bwords", hue="vectors", data=box_data)
         #sns.despine(offset=10, trim=True)        
