@@ -350,8 +350,6 @@ def is_synonym(n_word, o_word):
     
     return n_word in synonyms 
 
-def joint_plot(scores, cosines): 
-    a = 0 #Dummy Value  
 
 def run_experiment(model, num_experiments): 
     average = 0.0 
