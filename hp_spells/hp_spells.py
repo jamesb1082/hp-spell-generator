@@ -361,17 +361,17 @@ def run_experiment(model, num_experiments):
     avg_cos_dists = [] 
     syn_experiments = []
     bword_counts = [] 
-    scores_per_spell=[[] for x in range(50)]#tracks each spell score MUST BE CHANGED TO NUM ENTRIES.    
+    scores_per_spell=[[] for x in range(10)]#tracks each spell score MUST BE CHANGED TO NUM ENTRIES.    
     table1 = []  
     table2 = []
-    bwords_spell= [[] for x in range(50)] #tracks the number of bogus words against size
+    bwords_spell= [[] for x in range(10)] #tracks the number of bogus words against size
     for i in range(0, num_experiments):
         table1 = []  
         table2 = []
         print("---------------", i, "---------------")
         log("---------------"+str(i) +  "---------------")
         bogus_words = 0  
-        spellFile = open("all_spells.csv") 
+        spellFile = open("spells.csv") 
         entry = [] 
         score = 0
         count = 0
@@ -508,13 +508,13 @@ if __name__ == '__main__':
         box_data = pd.DataFrame({"length":box_len, "originality":box_score, "vectors":box_vec})  
         #originality vs size plots. 
         ax = sns.tsplot(time="length", value="originality", unit="vectors",condition="vectors",data=len_results  )
+#        sns.plt.xticks([0,1,2,3,4,5,6,7,8,9,10]) 
         sns.plt.show()
-        #factor plot 
-        graph = sns.factorplot(x="length", data=len_results, kind="count", size=6, aspect=1.5, order="length") 
-        sns.plt.show() 
+
+        ax = sns.distplot(box_score) 
+        sns.plt.show()
         #box plot 
         ax = sns.boxplot(x="length", y = "originality", hue="vectors", data=box_data)
-        #sns.despine(offset=10, trim=True)        
         sns.plt.show() 
        
         box_len = [] 
@@ -534,12 +534,12 @@ if __name__ == '__main__':
        
         box_data = pd.DataFrame({"length":box_len, "bwords":box_score, "vectors":box_vec})  
        #gibberish vs size plots  
-        ax = sns.tsplot(time="length", value="bwords", unit="vectors",condition="vectors",data=len_results  )
+        ax = sns.tsplot(time="length", value="bwords", unit="vectors",condition="vectors",data=len_results )
+#        sns.plt.xticks([0,1,2,3,4,5,6,7,8,9,10])
         sns.plt.show()
-        #factor plot 
-      #  graph = sns.factorplot(x="length", data=len_results, kind="bwords", size=6, aspect=1.5, order="length") 
-       
-       #sns.plt.show() 
+        #histogram 
+        ax = sns.distplot(box_score) 
+        sns.plt.show() 
         #box plot 
         ax = sns.boxplot(x="length", y = "bwords", hue="vectors", data=box_data)
         #sns.despine(offset=10, trim=True)        
