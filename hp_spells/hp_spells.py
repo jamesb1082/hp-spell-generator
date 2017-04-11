@@ -325,6 +325,13 @@ def generateSpell(sentence, model, oword):
 
 
 def load_vectors(path, is_binary): 
+    """
+    This loads the vectors supplied by the path. 
+    @param path: The path to the vector file
+    @type path: str
+    @param is_binary: states whether file is a binary file. 
+    @type is_binary: boolean
+    """
     print("Loading: ", path) 
     model = gensim.models.Word2Vec.load_word2vec_format(path, binary=is_binary)
     model.init_sims(replace=True) 
@@ -352,6 +359,9 @@ def is_synonym(n_word, o_word):
 
 
 def run_experiment(model, num_experiments): 
+    """
+
+    """
     average = 0.0 
     iterationCount = 0
     scores = [] 
