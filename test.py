@@ -66,6 +66,8 @@ def test9():
 	
 	assert generateScale(input1) == output 
 
+def test10():
+    assert is_synonym("battle", "combat") == True
 	
 if __name__ == '__main__':
 
