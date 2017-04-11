@@ -195,7 +195,6 @@ def translate2(word, lang):
     :type lang: str 
     :return: a string containing the translated word in the latin alphabet. 
     """
-    return "a" ##DONE FOR ANALYSIS SPEED. TAKES AWAY HARRY POTTER SPELL CREATION.
     translator = Translator(to_lang=lang)
     try:
         out = translator.translate(word)
@@ -360,7 +359,12 @@ def is_synonym(n_word, o_word):
 
 def run_experiment(model, num_experiments): 
     """
-
+        This function runs the experiments with the paramters set. 
+        It then returns all the necessary data for processing and output.
+        @param model: The vectors loaded.
+        @type model: The loaded vector object 
+        @param num_experiments: The number of experiments to run. 
+        @type num_experiments: int
     """
     average = 0.0 
     iterationCount = 0
@@ -409,9 +413,7 @@ def run_experiment(model, num_experiments):
             cos_dists.append(distance.cosine(og_wd, nw_wd))#added log to improve output graph.    
             if is_synonym(spell[2].lower(), entry[-1]): 
                 syn_counts +=1
-        print(count) 
         #print(tabulate(table1,headers=["Translated"])) 
-        print(tabulate(table2,headers=[ "English"])) 
         print("Experiment Results")
 
         print("Num of spells that don't feature in definition: ", score)       
@@ -451,7 +453,6 @@ if __name__ == '__main__':
     num_experiments = 20 
     if args.exp != None: 
         num_experiments = args.exp 
-    
     
     if args.comp: # comparison mode. 
         print("Compare Mode") 
