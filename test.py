@@ -70,8 +70,6 @@ def test10():
     assert is_synonym("battle", "combat") == True
 	
 if __name__ == '__main__':
-
-
 	test1()
 	test2()
 	test3()
@@ -81,5 +79,5 @@ if __name__ == '__main__':
 	test7()
 	test8()
 	test9() 
-    test10()	
+    test10()
 
