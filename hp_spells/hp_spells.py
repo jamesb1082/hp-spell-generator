@@ -140,7 +140,7 @@ def getSpellType(scale, rndNum):
             temp = scale[i]
             temp2 = scale[i + 1]
             if rndNum >= temp[0]:
-                if rndNum < temp2[2]:
+                if rndNum < temp2[0]:
                     return temp2[1]
 
     temp2 = scale[0]
