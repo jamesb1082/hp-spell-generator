@@ -631,21 +631,3 @@ if __name__ == '__main__':
         sns.plt.show() 
         ax = sns.violinplot(x="scores", y="similarity", data=results) 
         sns.plt.show()  
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
