@@ -51,9 +51,14 @@
 <div class="section" id="current-features">
 <h2>Current Features<a class="headerlink" href="#current-features" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Can convert a given sentence into a Harry Potter spell with random language and type.</li>
-<li>Uses Google&#8217;s Word2Vec to get semantically similar words.</li>
-<li>It is non-determinstic, it will not supply the output every time.</li>
+<li>Can use either Word2Vec or GloVe to generate Harry Potter spell names.</li>
+<li>Provides evaluation against four different metrics:<ol class="arabic">
+<li>Originality</li>
+<li>Cosine Similarity</li>
+<li>Synoynms</li>
+<li>Gibberish Words</li>
+</ol>
+</li>
 </ul>
 </div>
 <div class="section" id="usage-notes">
@@ -128,8 +133,8 @@
       &copy;2016, James Brill.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
       <a href="_sources/index.rst.txt"

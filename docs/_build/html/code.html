@@ -65,7 +65,9 @@
 <dt id="hp_spells.checkStoredWords">
 <code class="descclassname">hp_spells.</code><code class="descname">checkStoredWords</code><span class="sig-paren">(</span><em>kwords</em>, <em>word</em><span class="sig-paren">)</span><a class="headerlink" href="#hp_spells.checkStoredWords" title="Permalink to this definition">¶</a></dt>
 <dd><blockquote>
-<div>This function updates a list of known words with a new word. If the spell type and language exists in the list the value is append by 1 otherwise, it is appended to the end of the list with a value of 1.</div></blockquote>
+<div>This function updates a list of known words with a new word. If the spell type and</div></blockquote>
+<p>language exists in the list the value is append by 1 otherwise, it is appended to 
+the end of the list with a value of 1.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -84,32 +86,11 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="hp_spells.contains">
-<code class="descclassname">hp_spells.</code><code class="descname">contains</code><span class="sig-paren">(</span><em>string</em>, <em>char</em><span class="sig-paren">)</span><a class="headerlink" href="#hp_spells.contains" title="Permalink to this definition">¶</a></dt>
-<dd><blockquote>
-<div>Checks to see if a string contains a character.</div></blockquote>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>string</strong> (<em>str</em>) &#8211; The string to be checked.</li>
-<li><strong>char</strong> (<em>str</em>) &#8211; The character to be looked for.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Boolean value.</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
 <dt id="hp_spells.count_instances">
 <code class="descclassname">hp_spells.</code><code class="descname">count_instances</code><span class="sig-paren">(</span><em>fname</em><span class="sig-paren">)</span><a class="headerlink" href="#hp_spells.count_instances" title="Permalink to this definition">¶</a></dt>
 <dd><blockquote>
-<div>Reads supplied file, where it splits it up. Then it appends each word to the data set building a list of words and frequencies using checkStoredWords(kwords, word).</div></blockquote>
+<div>Reads supplied file, where it splits it up. Then it appends each word to the data</div></blockquote>
+<p>set building a list of words and frequencies using checkStoredWords(kwords, word).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -142,7 +123,8 @@
 <dt id="hp_spells.generateScale">
 <code class="descclassname">hp_spells.</code><code class="descname">generateScale</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#hp_spells.generateScale" title="Permalink to this definition">¶</a></dt>
 <dd><blockquote>
-<div>This stacks the probabilities of spells so that each spell has a boundary in which it a spell can be selected over another.</div></blockquote>
+<div>This stacks the probabilities of spells so that each spell has a boundary in which</div></blockquote>
+<p>it a spell can be selected over another.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -157,15 +139,21 @@
 
 <dl class="function">
 <dt id="hp_spells.generateSpell">
-<code class="descclassname">hp_spells.</code><code class="descname">generateSpell</code><span class="sig-paren">(</span><em>sentence</em><span class="sig-paren">)</span><a class="headerlink" href="#hp_spells.generateSpell" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">hp_spells.</code><code class="descname">generateSpell</code><span class="sig-paren">(</span><em>sentence</em>, <em>model</em>, <em>oword</em><span class="sig-paren">)</span><a class="headerlink" href="#hp_spells.generateSpell" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates a Spell from a sentence.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sentence</strong> (<em>str</em>) &#8211; string which is the definition of the spell you want to create.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sentence</strong> (<em>str</em>) &#8211; string which is the definition of the spell you want to create.</li>
+<li><strong>model</strong> &#8211; loaded vector orepresentation of words.
+:type model: data file loaded.</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list containing the spell and the spell type.</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">list containing the spell and the spell type.</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -194,6 +182,44 @@
 </dd></dl>
 
 <dl class="function">
+<dt id="hp_spells.is_synonym">
+<code class="descclassname">hp_spells.</code><code class="descname">is_synonym</code><span class="sig-paren">(</span><em>n_word</em>, <em>o_word</em><span class="sig-paren">)</span><a class="headerlink" href="#hp_spells.is_synonym" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function uses a combination of NLTK&#8217;s wordnet to 
+list all synonyms for a word and to check if a new word is a synonym.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>n_word</strong> (<em>str</em>) &#8211; The new word generated.</li>
+<li><strong>o_word</strong> (<em>str</em>) &#8211; The original word in the definition.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Returns a boolean indicating whether n_word is a synonym of o_word.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="hp_spells.is_valid">
+<code class="descclassname">hp_spells.</code><code class="descname">is_valid</code><span class="sig-paren">(</span><em>string</em><span class="sig-paren">)</span><a class="headerlink" href="#hp_spells.is_valid" title="Permalink to this definition">¶</a></dt>
+<dd><p>check to see whether a word consists of alpha characters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>string</strong> (<em>str</em>) &#8211; The string to be checked.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Boolean value.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
 <dt id="hp_spells.langCode">
 <code class="descclassname">hp_spells.</code><code class="descname">langCode</code><span class="sig-paren">(</span><em>language</em><span class="sig-paren">)</span><a class="headerlink" href="#hp_spells.langCode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts a language name into a language code for the translator.</p>
@@ -204,6 +230,27 @@
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>language</strong> (<em>tr</em>) &#8211; Full name of the language, for example latin.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The string code for the language.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="hp_spells.load_vectors">
+<code class="descclassname">hp_spells.</code><code class="descname">load_vectors</code><span class="sig-paren">(</span><em>path</em>, <em>is_binary</em><span class="sig-paren">)</span><a class="headerlink" href="#hp_spells.load_vectors" title="Permalink to this definition">¶</a></dt>
+<dd><p>This loads the vectors supplied by the path.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> (<em>str</em>) &#8211; The path to the vector file</li>
+<li><strong>is_binary</strong> (<em>boolean</em>) &#8211; states whether file is a binary file.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The loaded model.</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -227,8 +274,51 @@
 </dd></dl>
 
 <dl class="function">
+<dt id="hp_spells.run_experiment">
+<code class="descclassname">hp_spells.</code><code class="descname">run_experiment</code><span class="sig-paren">(</span><em>model</em>, <em>num_experiments</em><span class="sig-paren">)</span><a class="headerlink" href="#hp_spells.run_experiment" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function runs the experiments with the paramters set. 
+It then returns all the necessary data for processing and output.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>model</strong> (<em>The loaded vector object</em>) &#8211; The vectors loaded.</li>
+<li><strong>num_experiments</strong> (<em>int</em>) &#8211; The number of experiments to run.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of averages scores, one entry per experiment.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of the average number of synonyms produced, one  entry per experiment.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The average score across the experiments.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of average cosine similarity scores, one entry per experiment.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The number of experiments.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing the number of bogus words produced, one entry per expeirment.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing lists with each sublist containing the scores produced for that definition length.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A list containing list with each sublist containing number of bogus words produced for that definition length.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
 <dt id="hp_spells.sentenceToWord">
-<code class="descclassname">hp_spells.</code><code class="descname">sentenceToWord</code><span class="sig-paren">(</span><em>sentence</em><span class="sig-paren">)</span><a class="headerlink" href="#hp_spells.sentenceToWord" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">hp_spells.</code><code class="descname">sentenceToWord</code><span class="sig-paren">(</span><em>sentence</em>, <em>model</em>, <em>oword</em><span class="sig-paren">)</span><a class="headerlink" href="#hp_spells.sentenceToWord" title="Permalink to this definition">¶</a></dt>
 <dd><p>Takes a string and converts it into a vector. Then from that it picks a similar word that doesn&#8217;t contain an underscore.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -321,8 +411,8 @@
       &copy;2016, James Brill.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
       <a href="_sources/code.rst.txt"

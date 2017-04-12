@@ -13,13 +13,15 @@ This is a research project which aims to explore computational creativity using 
 
 Current Features
 ----------------
-* Can convert a given sentence into a Harry Potter spell with random language and type.
- 
-* Uses Google's Word2Vec to get semantically similar words. 
+* Can use either Word2Vec or GloVe to generate Harry Potter spell names. 
 
-* It is non-determinstic, it will not supply the output every time. 
+* Provides evaluation against four different metrics: 
+    
+  1. Originality
+  2. Cosine Similarity
+  3. Synoynms
+  4. Gibberish Words
 
- 
 
 
 

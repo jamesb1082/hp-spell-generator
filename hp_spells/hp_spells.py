@@ -326,10 +326,12 @@ def generateSpell(sentence, model, oword):
 def load_vectors(path, is_binary): 
     """
     This loads the vectors supplied by the path. 
-    @param path: The path to the vector file
-    @type path: str
-    @param is_binary: states whether file is a binary file. 
-    @type is_binary: boolean
+    
+    :param path: The path to the vector file
+    :type path: str
+    :param is_binary: states whether file is a binary file. 
+    :type is_binary: boolean
+    :return: The loaded model. 
     """
     print("Loading: ", path) 
     model = gensim.models.Word2Vec.load_word2vec_format(path, binary=is_binary)
@@ -344,10 +346,12 @@ def is_synonym(n_word, o_word):
     """
     This function uses a combination of NLTK's wordnet to 
     list all synonyms for a word and to check if a new word is a synonym. 
-    @param n_word: The new word generated. 
-    @type n_word: str 
-    @param o_word: The original word in the definition. 
-    @type o_word: str
+    
+    :param n_word: The new word generated. 
+    :type n_word: str 
+    :param o_word: The original word in the definition. 
+    :type o_word: str
+    :return: Returns a boolean indicating whether n_word is a synonym of o_word.  
     """
     synonyms=[]
     synsets = wordnet.synsets(o_word)
@@ -361,10 +365,19 @@ def run_experiment(model, num_experiments):
     """
         This function runs the experiments with the paramters set. 
         It then returns all the necessary data for processing and output.
-        @param model: The vectors loaded.
-        @type model: The loaded vector object 
-        @param num_experiments: The number of experiments to run. 
-        @type num_experiments: int
+        
+        :param model: The vectors loaded.
+        :type model: The loaded vector object 
+        :param num_experiments: The number of experiments to run. 
+        :type num_experiments: int
+        :return: A list of averages scores, one entry per experiment.   
+        :return: A list of the average number of synonyms produced, one  entry per experiment. 
+        :return: The average score across the experiments.  
+        :return: A list of average cosine similarity scores, one entry per experiment. 
+        :return: The number of experiments. 
+        :return: A list containing the number of bogus words produced, one entry per expeirment. 
+        :return: A list containing lists with each sublist containing the scores produced for that definition length.  
+        :return: A list containing list with each sublist containing number of bogus words produced for that definition length. 
     """
     average = 0.0 
     iterationCount = 0
@@ -373,10 +386,10 @@ def run_experiment(model, num_experiments):
     avg_cos_dists = [] 
     syn_experiments = []
     bword_counts = [] 
-    scores_per_spell=[[] for x in range(10)]#tracks each spell score MUST BE CHANGED TO NUM ENTRIES.    
+    scores_per_spell=[[] for x in range(10)] #size of definition length.     
     table1 = []  
     table2 = []
-    bwords_spell= [[] for x in range(10)] #tracks the number of bogus words against size
+    bwords_spell= [[] for x in range(10)] #size of definition length. 
     for i in range(0, num_experiments):
         table1 = []  
         table2 = []
@@ -392,30 +405,30 @@ def run_experiment(model, num_experiments):
             count+=1
             line = line.strip("\n")
             entry = line.split(",")
-            #sen_len.append(len(entry[1].split(" ")))#records length of the sentence. 
-            #print(len(entry[1].split(" ")))
-
             spell, temp_bogus = generateSpell(entry[1], model,entry[3] )
-            bwords_spell[len(entry[1].split(" "))].append(temp_bogus) #stores the bogus words. 
+            bwords_spell[len(entry[1].split(" "))].append(temp_bogus)  
             bogus_words+= temp_bogus
+            
             if args.verbose: 
                 print("Your new spell is: ", spell[0])  
+            
             if spell[2].lower() not in entry[1].split():  
                 score +=1
-                scores_per_spell[len(entry[1].split(" "))].append(1) #keeps track of originality scores. 
+                scores_per_spell[len(entry[1].split(" "))].append(1) 
             else: 
                 scores_per_spell[len(entry[1].split(" "))].append(0) 
+            
             table1.append([spell[0]])  
             table2.append([spell[2]]) 
             #calculate the cosine similarity. 
             og_wd = model[entry[-1].strip()] 
             nw_wd = model[spell[-1]]
-            cos_dists.append(distance.cosine(og_wd, nw_wd))#added log to improve output graph.    
+            cos_dists.append(distance.cosine(og_wd, nw_wd))    
+            
             if is_synonym(spell[2].lower(), entry[-1]): 
                 syn_counts +=1
-        #print(tabulate(table1,headers=["Translated"])) 
+        
         print("Experiment Results")
-
         print("Num of spells that don't feature in definition: ", score)       
         print("Percentage: ", ((float(score)/count) * 100),"%") 
         print("Average Cosine-simalarity:", float(sum(cos_dists) / len(cos_dists)))  
@@ -448,9 +461,10 @@ if __name__ == '__main__':
             help = "Runs the word2vec vectors, and the GloVe vectors") 
     args = parser.parse_args()
    
-    logFile = open("log.txt", 'w' ) #the log file is blank at start of each execution 
-    logFile.close() #closes the log file 
+    logFile = open("log.txt", 'w' )  
+    logFile.close()  
     num_experiments = 20 
+    
     if args.exp != None: 
         num_experiments = args.exp 
     

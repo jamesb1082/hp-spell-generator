@@ -66,8 +66,17 @@ def test9():
 
 	assert generateScale(input1) == output 
 
+
 def test10():
-	assert is_synonym("battle", "combat") == True	
+	correct = [[['name1', ' def1', ' lang1', ' desc1'], 1, 0.5], [['name2', ' def2', ' lang1', ' desc2'], 1, 0.5]]
+	assert count_instances("test.csv") == correct 
+
+def test11():
+	scale_in = [("s1", "t1", 0.3), ("s2", "t1", 0.4), ("s3", "t2", 0.3)]
+	rnd = 0.45
+	output = "t1" 
+	assert getSpellType(scale_in, rnd) == output  
+	
 if __name__ == '__main__':
 	test1()
 	test2()
@@ -79,3 +88,4 @@ if __name__ == '__main__':
 	test8()
 	test9() 
 	test10()
+	test11() 
