@@ -1,0 +1,50 @@
+\begin{sphinxtheindex}
+\def\bigletter#1{{\Large\sffamily#1}\nopagebreak\vspace{1mm}}
+
+  \bigletter C
+  \item calcProb() (in module hp\_spells), \hyperpage{5}
+  \item checkStoredWords() (in module hp\_spells), \hyperpage{5}
+  \item count\_instances() (in module hp\_spells), \hyperpage{5}
+
+  \indexspace
+  \bigletter F
+  \item f() (in module hp\_spells), \hyperpage{6}
+
+  \indexspace
+  \bigletter G
+  \item generateScale() (in module hp\_spells), \hyperpage{6}
+  \item generateSpell() (in module hp\_spells), \hyperpage{6}
+  \item getSpellType() (in module hp\_spells), \hyperpage{6}
+
+  \indexspace
+  \bigletter H
+  \item hp\_spells (module), \hyperpage{5}
+
+  \indexspace
+  \bigletter I
+  \item is\_synonym() (in module hp\_spells), \hyperpage{6}
+  \item is\_valid() (in module hp\_spells), \hyperpage{6}
+
+  \indexspace
+  \bigletter L
+  \item langCode() (in module hp\_spells), \hyperpage{7}
+  \item load\_vectors() (in module hp\_spells), \hyperpage{7}
+
+  \indexspace
+  \bigletter P
+  \item pigLatin() (in module hp\_spells), \hyperpage{7}
+
+  \indexspace
+  \bigletter R
+  \item run\_experiment() (in module hp\_spells), \hyperpage{7}
+
+  \indexspace
+  \bigletter S
+  \item sentenceToWord() (in module hp\_spells), \hyperpage{7}
+
+  \indexspace
+  \bigletter T
+  \item totalSpells() (in module hp\_spells), \hyperpage{7}
+  \item translate2() (in module hp\_spells), \hyperpage{8}
+
+\end{sphinxtheindex}

@@ -245,7 +245,6 @@ def sentenceToWord(sentence, model, oword):
             selected.append(num)
 
         bogus_words+=1
-   # print(final_output[0])
     return final_output, bogus_words 
 
 
@@ -499,6 +498,7 @@ if __name__ == '__main__':
         bwords_per = w_bwords_per + g_bwords_per
         spells_per = w_spells_per + g_spells_per
         vec = w_vec + g_vec 
+        
         ##adds values for empty rows.#might want to remove empty rows later.  
         for row in spells_per: 
             if len(row) == 0: 
@@ -529,9 +529,10 @@ if __name__ == '__main__':
                 box_vec.append("GloVe") 
        
         box_data = pd.DataFrame({"length":box_len, "originality":box_score, "vectors":box_vec})  
+        
         #originality vs size plots. 
         ax = sns.tsplot(time="length", value="originality", unit="vectors",condition="vectors",data=len_results  )
-#        sns.plt.xticks([0,1,2,3,4,5,6,7,8,9,10]) 
+        # sns.plt.xticks([0,1,2,3,4,5,6,7,8,9,10]) 
         sns.plt.show()
 
         ax = sns.distplot(box_score) 
@@ -544,7 +545,6 @@ if __name__ == '__main__':
         box_score= [] 
         box_vec=[] 
         
-
         for i in range(0,len(w_bwords_per)): 
             for row in w_bwords_per[i]: 
                 box_len.append(i+1)
@@ -565,11 +565,7 @@ if __name__ == '__main__':
         sns.plt.show() 
         #box plot 
         ax = sns.boxplot(x="length", y = "bwords", hue="vectors", data=box_data)
-        #sns.despine(offset=10, trim=True)        
-        sns.plt.show() 
-       #
-        
-        
+        sns.plt.show()
         ##output results. 
 
         print("----------------word2vec Experiment Results------------------")
@@ -626,6 +622,7 @@ if __name__ == '__main__':
         print("The mean amount of synonyms", (sum(syn_experiments)/ iterationCount))
         print("Average number of words that are not fit for translation: ",float(sum(bword_counts)/iterationCount)) 
         results = pd.DataFrame({'scores': scores, 'similarity': avg_cos_dists})
+        
         #loop through and add an entry to any empty fields. 
         for row in spells_per: 
             if len(row) == 0: 
@@ -635,12 +632,8 @@ if __name__ == '__main__':
         length= [x for x in range(0, len(spells_per_avg))] 
 
         vec = ["vector" for x in spells_per_avg] 
-
-        len_results = pd.DataFrame({"scores":spells_per_avg,"length":length, "vec":vec})
-
         ax = sns.tsplot(time="length", value="scores", unit="vec",condition="vec",data=len_results  )
         sns.plt.show()
-       # ts_plot(len_results, "scores") 
         ax2 = sns.violinplot(x=results["similarity"]) 
         sns.plt.show() 
         ax = sns.violinplot(x="scores", y="similarity", data=results) 
