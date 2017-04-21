@@ -1,2 +1,24 @@
 ---------------Vectors used: Word2Vec---------------
 ---------------0---------------
+key error in vector filea
+Error Cannot translate: bioshock
+Error Cannot translate: unbiased
+Error Cannot translate: slid
+Error Cannot translate: impede
+Error Cannot translate: bodys
+key error in vector filea
+Error Cannot translate: nonmagical
+Error Cannot translate: funny
+Error Cannot translate: imprecations
+key error in vector fileand
+---------------1---------------
+Error Cannot translate: pluck
+Error Cannot translate: Kamawi
+Error Cannot translate: separating
+Error Cannot translate: embolden
+key error in vector filea
+Error Cannot translate: toggle
+Error Cannot translate: skidding
+key error in vector filea
+Error Cannot translate: overjoyed
+key error in vector fileand

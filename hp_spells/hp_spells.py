@@ -556,10 +556,6 @@ if __name__ == '__main__':
                 box_vec.append("GloVe") 
        
         box_data = pd.DataFrame({"length":box_len, "bwords":box_score, "vectors":box_vec})  
-       #gibberish vs size plots  
-        ax = sns.tsplot(time="length", value="bwords", unit="vectors",condition="vectors",data=len_results )
-#        sns.plt.xticks([0,1,2,3,4,5,6,7,8,9,10])
-        sns.plt.show()
         #histogram 
         ax = sns.distplot(box_score) 
         sns.plt.show() 
@@ -613,7 +609,7 @@ if __name__ == '__main__':
             model = load_vectors("../../vectors/GoogleNews-vectors-negative300.bin", True) 
         
         
-        scores, syn_experiments, average, avg_cos_dists, iterationCount, bword_counts,  spells_per= run_experiment(model, num_experiments)       
+        scores, syn_experiments, average, avg_cos_dists, iterationCount, bword_counts,  spells_per, bwords_per= run_experiment(model, num_experiments)       
         print("----------------Experiment Results------------------")
         print("The mean average percentage over ", iterationCount , "tests: ",
                 (average/iterationCount), "%")
@@ -632,7 +628,6 @@ if __name__ == '__main__':
         length= [x for x in range(0, len(spells_per_avg))] 
 
         vec = ["vector" for x in spells_per_avg] 
-        ax = sns.tsplot(time="length", value="scores", unit="vec",condition="vec",data=len_results  )
         sns.plt.show()
         ax2 = sns.violinplot(x=results["similarity"]) 
         sns.plt.show() 
