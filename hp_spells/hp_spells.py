@@ -496,9 +496,7 @@ if __name__ == '__main__':
         model = load_vectors("../../vectors/glove.txt.vw", False)
 
         # run experiments and move results into data frame. 
-        g_scores, g_syn_experiments, g_average, g_avg_cos_dists, 
-        iterationCount, g_bword_counts,  g_spells_per, g_bwords_per= 
-        run_experiment(model, num_experiments)  
+        g_scores, g_syn_experiments, g_average, g_avg_cos_dists, iterationCount, g_bword_counts,  g_spells_per, g_bwords_per= run_experiment(model, num_experiments)  
         g_vec = ["glove" for x in g_scores]
 
         scores=w_scores + g_scores
