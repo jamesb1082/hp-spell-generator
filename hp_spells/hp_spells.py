@@ -200,7 +200,14 @@ def translate2(word, lang):
     except:
         log("Error Cannot translate: " + word)
 
-def log(text): 
+def log(text):
+    """
+    
+    Writes a message to a log file. 
+
+    :param text: The text you want to write to log file. 
+    :type text: str
+    """
     logfile = open("log.txt", "a") 
     logfile.write(text.encode("utf-8") + "\n")
     logfile.close() 
@@ -236,7 +243,8 @@ def sentenceToWord(sentence, model, oword):
         if num in selected:
             if len(selected) == top_val:
                 top_val = top_val * 2
-                output = model.most_similar(positive=[vector_sum], topn=top_val)
+                output = model.most_similar(positive=[vector_sum], 
+                        topn=top_val)
         else:
             selected.append(num)
 
@@ -313,7 +321,7 @@ def generateSpell(sentence, model, oword):
     else:
         spell.append(translate2(vector, target_lang))
     spell.append(spell_meta[0])
-    spell.append(vector) #The original word before translation is also added onto the end for evaluation purposes.
+    spell.append(vector) #The original word before translation is also added.
     return spell, temp_bogus 
 
 
@@ -329,7 +337,8 @@ def load_vectors(path, is_binary):
     :return: The loaded model. 
     """
     print("Loading: ", path) 
-    model = gensim.models.Word2Vec.load_word2vec_format(path, binary=is_binary)
+    model = gensim.models.Word2Vec.load_word2vec_format(path, 
+            binary=is_binary)
     model.init_sims(replace=True) 
     print("Loaded: ", path)
     return model 
@@ -400,7 +409,8 @@ def run_experiment(model, num_experiments):
             count+=1
             line = line.strip("\n")
             entry = line.split(",")
-            spell, temp_bogus = generateSpell(entry[1], model,entry[3] )
+            spell, temp_bogus = generateSpell(entry[1], 
+                    model,entry[3])
             bwords_spell[len(entry[1].split(" "))].append(temp_bogus)  
             bogus_words+= temp_bogus
             
@@ -445,14 +455,17 @@ def run_experiment(model, num_experiments):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
             'Use Word2Vec or GloVe datasets to generate Harry Potter Spells')
-    parser.add_argument('--glove', action='store_const', const = 'glove',
+    parser.add_argument('--glove', action='store_const', 
+            const = 'glove',
             help='Use the GloVe dataset instead of the default Word2Vec.')    
-    parser.add_argument('--exp',
-    help="Specifies the number of experiments on this run. Default is 20.",
+    parser.add_argument('--exp', 
+            help="Specifies the number of experiments on this run. Default is 20.",
             action='store', type=int)
-    parser.add_argument('--verbose', action='store_const', const = 'verbose',
+    parser.add_argument('--verbose', action='store_const', 
+            const = 'verbose',
             help='Prints out the spell names') 
-    parser.add_argument('--comp', action= 'store_const', const='comp', 
+    parser.add_argument('--comp', action= 'store_const', 
+            const='comp', 
             help = "Runs the word2vec vectors, and the GloVe vectors") 
     args = parser.parse_args()
    
@@ -467,19 +480,25 @@ if __name__ == '__main__':
         print("Compare Mode") 
         log("----------------------Compare Mode-----------------------")
         print("Vectors used: Word2Vec")
-        log("---------------"+ "Vectors used: Word2Vec"+ "---------------")
-        model = load_vectors("../../vectors/GoogleNews-vectors-negative300.bin", True)  
+        log("---------------"+ "Vectors used: Word2Vec"+ 
+                "---------------")
+        model = load_vectors(
+                "../../vectors/GoogleNews-vectors-negative300.bin", True)  
                 
         #Run word2vec experiments and then stores data in dataframe. 
-        w_scores, w_syn_experiments, w_average, w_avg_cos_dists, iterationCount, w_bword_counts,  w_spells_per, w_bwords_per= run_experiment(model, num_experiments)    
+        w_scores, w_syn_experiments, w_average, w_avg_cos_dists, iterationCount, w_bword_counts,  w_spells_per, w_bwords_per = run_experiment(
+                model, num_experiments)    
         w_vec=["word2vec" for x in w_scores]         
         del model  
         print("Vectors used: GloVe")
-        log("---------------" +  "Vectors used: GloVe"+ "---------------")
+        log("---------------" +  "Vectors used: GloVe"+ 
+                "---------------")
         model = load_vectors("../../vectors/glove.txt.vw", False)
 
         # run experiments and move results into data frame. 
-        g_scores, g_syn_experiments, g_average, g_avg_cos_dists, iterationCount, g_bword_counts,  g_spells_per, g_bwords_per= run_experiment(model, num_experiments)  
+        g_scores, g_syn_experiments, g_average, g_avg_cos_dists, 
+        iterationCount, g_bword_counts,  g_spells_per, g_bwords_per= 
+        run_experiment(model, num_experiments)  
         g_vec = ["glove" for x in g_scores]
 
         scores=w_scores + g_scores
@@ -495,7 +514,7 @@ if __name__ == '__main__':
         spells_per = w_spells_per + g_spells_per
         vec = w_vec + g_vec 
         
-        ##adds values for empty rows.#might want to remove empty rows later.  
+        ##adds values for empty rows.
         for row in spells_per: 
             if len(row) == 0: 
                 row.append(0)
@@ -504,9 +523,11 @@ if __name__ == '__main__':
                 row.append(0)
 
         spells_per_avg = [float(sum(l)/len(l)) for l in spells_per]
-        length= [x for x in range(1, len(w_spells_per)+1)] + [x for x in range(1, len(g_spells_per)+1)]  
+        length= [x for x in range(1, len(w_spells_per)+1)] + [x for x in range(
+            1, len(g_spells_per)+1)]  
         bwords_per_avg = [float(sum(l)/len(l)) for l in bwords_per]
-        len_results = pd.DataFrame({"originality":spells_per_avg,"length":length,"bwords":bwords_per_avg, "vectors":vec})
+        len_results = pd.DataFrame({"originality":spells_per_avg,
+            "length":length,"bwords":bwords_per_avg, "vectors":vec})
         
         box_len = [] 
         box_score= [] 
@@ -527,14 +548,17 @@ if __name__ == '__main__':
         box_data = pd.DataFrame({"length":box_len, "originality":box_score, "vectors":box_vec})  
         
         #originality vs size plots. 
-        ax = sns.tsplot(time="length", value="originality", unit="vectors",condition="vectors",data=len_results  )
-        # sns.plt.xticks([0,1,2,3,4,5,6,7,8,9,10]) 
+        ax = sns.tsplot(time="length", value="originality", 
+                unit="vectors",condition="vectors",
+                data=len_results  )
         sns.plt.show()
-
         ax = sns.distplot(box_score) 
         sns.plt.show()
+
+
         #box plot 
-        ax = sns.boxplot(x="length", y = "originality", hue="vectors", data=box_data)
+        ax = sns.boxplot(x="length", y = "originality", hue="vectors", 
+                data=box_data)
         sns.plt.show() 
        
         box_len = [] 
@@ -551,46 +575,59 @@ if __name__ == '__main__':
                 box_score.append(row2) 
                 box_vec.append("GloVe") 
        
-        box_data = pd.DataFrame({"length":box_len, "bwords":box_score, "vectors":box_vec})  
+        box_data = pd.DataFrame({"length":box_len, "bwords":box_score, 
+            "vectors":box_vec})  
         #histogram 
         ax = sns.distplot(box_score) 
         sns.plt.show() 
         #box plot 
-        ax = sns.boxplot(x="length", y = "bwords", hue="vectors", data=box_data)
+        ax = sns.boxplot(x="length", y = "bwords", hue="vectors", 
+                data=box_data)
         sns.plt.show()
         ##output results. 
 
         print("----------------word2vec Experiment Results------------------")
-        print("The mean average percentage over ", iterationCount , "tests: ",
-                (w_average/iterationCount), "%")
-        print("The mean cosine simalarity over ", iterationCount, "tests: ", 
+        print("The mean average percentage over ", iterationCount , 
+                "tests: ", (w_average/iterationCount), "%")
+        print("The mean cosine simalarity over ", iterationCount, 
+                "tests: ", 
                 float(sum(w_avg_cos_dists)/ len(w_avg_cos_dists)))
-        print("The mean amount of synonyms", (sum(w_syn_experiments)/ iterationCount))
+        print("The mean amount of synonyms", 
+                (sum(w_syn_experiments)/ iterationCount))
         print("Average number of words that are not fit for translation: ",float(sum(w_bword_counts)/iterationCount)) 
         
         
         print("----------------GloVe Experiment Results------------------")
-        print("The mean average percentage over ", iterationCount , "tests: ",
-                (g_average/iterationCount), "%")
-        print("The mean cosine simalarity over ", iterationCount, "tests: ", 
-                float(sum(g_avg_cos_dists)/ len(g_avg_cos_dists)))
-        print("The mean amount of synonyms", (sum(g_syn_experiments)/ iterationCount))
-        print("Average number of words that are not fit for translation: ",float(sum(g_bword_counts)/iterationCount)) 
+        print("The mean average percentage over ", iterationCount , 
+                "tests: ",(g_average/iterationCount), "%")
+        print("The mean cosine simalarity over ", iterationCount, 
+                "tests: ", float(sum(g_avg_cos_dists)/ len(g_avg_cos_dists)))
+        print("The mean amount of synonyms", 
+                (sum(g_syn_experiments)/ iterationCount))
+        print("Average number of words that are not fit for translation: ", float(sum(g_bword_counts)/iterationCount)) 
         
 
-        results = pd.DataFrame({"scores":scores, "similarity":avg_cos_dists, "synonyms":syn_experiments, "vectors":vectors, "bwords":bword_counts})
+        results = pd.DataFrame({"scores":scores, 
+            "similarity":avg_cos_dists,
+            "synonyms":syn_experiments, "vectors":vectors,
+            "bwords":bword_counts})
     
 
-        sim = sns.violinplot(x="vectors", y="similarity", data=results)
-        sns.plt.title("Comparison of Similarity over "+str( iterationCount)+ " experiments")
+        sim = sns.violinplot(x="vectors", y="similarity", 
+                data=results)
+        sns.plt.title("Comparison of Similarity over "+str( 
+            iterationCount)+ " experiments")
         sns.plt.show() 
         sc = sns.violinplot(x="vectors", y="scores", data=results) 
-        sns.plt.title("Comparison of accuracy scores over "+str(iterationCount)+ " experiments") 
+        sns.plt.title("Comparison of accuracy scores over "+str(
+            iterationCount)+ " experiments") 
         sns.plt.show()
         bw = sns.violinplot(x="vectors", y="bwords", data=results) 
-        sns.plt.title("Comparison of invalid words over "+ str(iterationCount)+ " experiments")  
+        sns.plt.title("Comparison of invalid words over "+ str(
+            iterationCount)+ " experiments")  
         sns.plt.show()
-        sns.plt.title("Comparison of synonyms over " +str( iterationCount) +" experiments")  
+        sns.plt.title("Comparison of synonyms over " +str( 
+            iterationCount) +" experiments")  
         syn = sns.violinplot(x="vectors", y="synonyms", data=results)
         sns.plt.show()
 
@@ -602,18 +639,22 @@ if __name__ == '__main__':
         else:
             print("Vectors used: Word2Vec")
             log("---------------"+ "Vectors used: Word2Vec"+ "---------------")
-            model = load_vectors("../../vectors/GoogleNews-vectors-negative300.bin", True) 
+            model = load_vectors(
+                    "../../vectors/GoogleNews-vectors-negative300.bin", True) 
         
         
         scores, syn_experiments, average, avg_cos_dists, iterationCount, bword_counts,  spells_per, bwords_per= run_experiment(model, num_experiments)       
         print("----------------Experiment Results------------------")
-        print("The mean average percentage over ", iterationCount , "tests: ",
-                (average/iterationCount), "%")
-        print("The mean cosine simalarity over ", iterationCount, "tests: ", 
-                float(sum(avg_cos_dists)/ len(avg_cos_dists)))
-        print("The mean amount of synonyms", (sum(syn_experiments)/ iterationCount))
-        print("Average number of words that are not fit for translation: ",float(sum(bword_counts)/iterationCount)) 
-        results = pd.DataFrame({'scores': scores, 'similarity': avg_cos_dists})
+        print("The mean average percentage over ", iterationCount , 
+                "tests: ",(average/iterationCount), "%")
+        print("The mean cosine simalarity over ", iterationCount, 
+                "tests: ", float(sum(avg_cos_dists)/ len(avg_cos_dists)))
+        print("The mean amount of synonyms", 
+                (sum(syn_experiments)/ iterationCount))
+        print("Average number of words that are not fit for translation: ",
+                float(sum(bword_counts)/iterationCount)) 
+        results = pd.DataFrame({'scores': scores, 
+            'similarity': avg_cos_dists})
         
         #loop through and add an entry to any empty fields. 
         for row in spells_per: 
