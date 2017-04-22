@@ -16,8 +16,7 @@ from tabulate import tabulate
 def checkStoredWords(kwords, word):
     """
 	
-	This function updates a list of known words with a new word. If the spell type and language exists in the list the value is append by 1 otherwise, it is appended to the end of the list with a value of 1.
-
+	This function updates a list of known words with a new word. If the spell type and language exists in the list the value is append by 1 otherwise, it is appended to the end of the list with a value of 1. 
     :param kwords: List of spell types and language with associated frequencies.  
     :param word: One being the spell type and the other being the origin language.
     :type kwords: [[[str, str], int]...] 
@@ -40,7 +39,8 @@ def checkStoredWords(kwords, word):
 def count_instances(fname):
     """
 	
-	Reads supplied file, where it splits it up. Then it appends each word to the data set building a list of words and frequencies using checkStoredWords(kwords, word). 
+	Reads supplied file, where it splits it up. Then it appends each word to the data
+    set building a list of words and frequencies using checkStoredWords(kwords, word). 
 
     :param fname: This is the name of the CSV file in which the spell data is stored.
     :type fname: str
@@ -97,7 +97,8 @@ def calcProb(data):
 def generateScale(data):
     """
 	
-	This stacks the probabilities of spells so that each spell has a boundary in which it a spell can be selected over another.
+	This stacks the probabilities of spells so that each spell has a boundary in which
+    it a spell can be selected over another.
 
     :param data: list of spell names and their associated frequencies and probabilities. 
     :type data: [[[str,str],int,float]...]
